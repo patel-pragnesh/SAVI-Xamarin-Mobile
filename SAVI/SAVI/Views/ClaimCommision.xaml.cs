@@ -87,14 +87,23 @@ namespace SAVI.Views
             }
             SAVIApplication.PaymentTypeID = MyViewModel.SelectedPtype.ID;
             SAVIApplication.MSISDN = edtMSISDN1.Text;
-            if (MyViewModel.SelectedPtype.Value=="Airtime")
-            await Navigation.PushAsync(new Airtime());
+            if (MyViewModel.SelectedPtype.Value == "Airtime")
+            {
+                await Navigation.PushAsync(new Airtime());
+               
+            }
 
             if (MyViewModel.SelectedPtype.Value == "Electricity")
+            {
                 await Navigation.PushAsync(new Electricity());
+               
+            }
 
             if (MyViewModel.SelectedPtype.Value == "Pay to Bank")
+            {
                 await Navigation.PushAsync(new Pay2Bank());
+              
+            }
 
 
         }

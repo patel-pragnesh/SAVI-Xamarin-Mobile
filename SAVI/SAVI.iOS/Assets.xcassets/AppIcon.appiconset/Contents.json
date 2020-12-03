@@ -80,24 +80,6 @@
     },
     {
       "scale": "2x",
-      "size": "76x76",
-      "idiom": "ipad",
-      "filename": "1521.png"
-    },
-    {
-      "scale": "2x",
-      "size": "83.5x83.5",
-      "idiom": "ipad",
-      "filename": "1671.png"
-    },
-    {
-      "scale": "1x",
-      "size": "1024x1024",
-      "idiom": "ios-marketing",
-      "filename": "1024.png"
-    },
-    {
-      "scale": "2x",
       "size": "40x40",
       "idiom": "iphone",
       "filename": "80.png"
@@ -107,6 +89,24 @@
       "size": "76x76",
       "idiom": "ipad",
       "filename": "761.png"
+    },
+    {
+      "scale": "2x",
+      "size": "76x76",
+      "idiom": "ipad",
+      "filename": "ipad1521.png"
+    },
+    {
+      "scale": "2x",
+      "size": "83.5x83.5",
+      "idiom": "ipad",
+      "filename": "ipad1671.png"
+    },
+    {
+      "scale": "1x",
+      "size": "1024x1024",
+      "idiom": "ios-marketing",
+      "filename": "ios_marketing1024x10241.png"
     }
   ],
   "properties": {},

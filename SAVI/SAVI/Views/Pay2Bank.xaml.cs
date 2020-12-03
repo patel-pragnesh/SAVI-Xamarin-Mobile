@@ -1,4 +1,6 @@
-﻿using Plugin.Toast;
+﻿using Demo.Pages;
+using Plugin.Toast;
+using Rg.Plugins.Popup.Services;
 using SAVI.com.celcom.savi;
 using SAVI.com.celcom.savi.common;
 using SAVI.Models;
@@ -9,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace SAVI.Views
@@ -97,7 +100,7 @@ namespace SAVI.Views
 
         }
 
-        private void buttonPay_Clicked(object sender, EventArgs e)
+        private async void buttonPay_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -129,13 +132,30 @@ namespace SAVI.Views
 
                     if (boolResult)
                     {
-                        CrossToastPopUp.Current.ShowToastMessage("You have successfully requested a Pay2Bank transaction. This will take 2-3 business days.");
-                        this.Navigation.PopAsync();
+//                        CrossToastPopUp.Current.ShowToastMessage("You have successfully requested a Pay2Bank transaction. This will take 2-3 business days.");
+  //                      await Navigation.PushAsync(new ClaimCommision());
+
+                        var pageMessage = new ShowMessagePopupPage("You have successfully requested a Pay2Bank transaction. This will take 2-3 business days.");
+                        await PopupNavigation.Instance.PushAsync(pageMessage);
+
+                        await Navigation.PopAsync();
+
                     }
                     else
                     {
-                        CrossToastPopUp.Current.ShowToastMessage("Not Successful payment!");
+                        //await Navigation.PushAsync(new ClaimCommision());
+                        // CrossToastPopUp.Current.ShowToastMessage("Not Successful payment!");
+                        var pageMessage = new ShowMessagePopupPage("Not Successful payment!");
+                        await PopupNavigation.Instance.PushAsync(pageMessage);
+
                         App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Pay2Bank", "PaymentId = " + SAVIApplication.PaymentTypeID + "Amount = " + editAmount.Text.Trim() + "cellnumber = " + cellnumber + " Somthing wrong for paying!");
+
+                   
+
+
+
+                        //var currentPage = Navigation.NavigationStack[Navigation.NavigationStack.IndexOf(this)];
+                        //Navigation.RemovePage(currentPage);
                     }
 
 
@@ -144,10 +164,13 @@ namespace SAVI.Views
             }
             catch (Exception ex)
             {
-                CrossToastPopUp.Current.ShowToastMessage("Somthing Wrong! Please try again.");
+              //  CrossToastPopUp.Current.ShowToastMessage("Somthing Wrong! Please try again.");
+                var pageMessage = new ShowMessagePopupPage("Somthing Wrong! Please try again.");
+                await PopupNavigation.Instance.PushAsync(pageMessage);
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Pay2Bank", DateTime.Now.ToString() + "|" + ex.Message);
-                this.Navigation.PopAsync();
+               
             }
+            
         }
     }
 }
