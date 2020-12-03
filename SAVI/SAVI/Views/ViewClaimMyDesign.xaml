@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+             x:Class="SAVI.Views.ViewClaimMyDesign"
+             BackgroundColor="White">
+    <ContentPage.Content>
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="100"/> 
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Account Number"  Grid.Column="0" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Label Text="Sample"  Grid.Column="1" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Start" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                
+                <Label Text="Search"  Grid.Column="0" Grid.Row="0" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Entry Placeholder="Search by Invoice No" Grid.Column="1" Grid.Row="0" BackgroundColor="#f2f2f2" TextColor="Black"/>
+                <Button Text="Search" Grid.Column="2" BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Micro"  HorizontalOptions="End" Margin="0,0,20,0" Padding="0" HeightRequest="40" WidthRequest="60"/>
+                <!--<Grid Grid.Row="1"  Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton TextColor="Black"   Grid.Column="0" HeightRequest="40" WidthRequest="60" HorizontalOptions="Center" />
+                    <Label Text="Invoice"  Grid.Column="1" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black"/>
+                </Grid>-->
+                
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="150"/>
+                    
+                </Grid.ColumnDefinitions>
+
+
+                <Label Text="Page No:"  Grid.Column="0" Grid.Row="0" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black" />
+                <Picker x:Name="Pageinator" ItemDisplayBinding="{Binding .}" SelectedIndexChanged="Pageinator_SelectedIndexChanged"  BackgroundColor="#f2f2f2" TextColor="Black" Grid.Column="1" Grid.Row="0"></Picker>
+            </Grid>
+           
+            <ScrollView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Both">
+
+                
+                <Grid BackgroundColor="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Empty" Grid.Row="0" Grid.Column="0" />
+                    <AbsoluteLayout Grid.Column="0"
+                                Grid.Row="0"
+                                VerticalOptions="FillAndExpand" >
+                       <ScrollView x:Name="colScrollView"
+                                Orientation="Horizontal"
+                                VerticalScrollBarVisibility="Never"
+                                HorizontalScrollBarVisibility="Never"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All">
+
+                            <Grid BackgroundColor="#01aef0" x:Name="dataGridHeader">
+                                <!--dynamic grid header-->
+                            </Grid>
+                        </ScrollView>
+                        <BoxView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    BackgroundColor="Transparent"></BoxView>    
+                    </AbsoluteLayout>
+                   
+                    
+                    
+                   <AbsoluteLayout Grid.Column="0"
+                                    Grid.Row="1"
+                                    VerticalOptions="FillAndExpand">
+                        <ScrollView x:Name="dataScrollView"
+                                    Orientation="Both"
+                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                    AbsoluteLayout.LayoutFlags="All">
+                            <StackLayout x:Name="dataStackView"> </StackLayout>
+                            <!--<Grid BackgroundColor="White" x:Name="dataGrid" >
+                                     
+                            </Grid>-->
+                        </ScrollView>
+                    </AbsoluteLayout>
+                </Grid>
+
+            </ScrollView>
+        </Grid>
+
+    </ContentPage.Content>
+     
+
+</ContentPage>

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SAVI.Views"
+    x:Class="SAVI.CameraVisionPage"
+    
+    xmlns:fontawesome="clr-namespace:SAVI"
+    
+       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             
+    >
+
+    <!--<NavigationPage.TitleView>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Camera Vision" TextColor="Black" FontAttributes="Bold" FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1" />
+
+            <ImageButton Source="camera.png"  HorizontalOptions="EndAndExpand" HeightRequest="30" WidthRequest="30" Aspect="AspectFit" Grid.Column="2" Margin="0, 0, 5, 0" />
+        </Grid>
+    </NavigationPage.TitleView>-->
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <AbsoluteLayout Margin="5,0">
+                    
+                  
+                    <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="20,0,20,0">
+                        <!--<Label Text="Begin " HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="Black"/>
+                        <Image x:Name="img_mobility_enduser" Source="mobility_end_user_logo.png" FlexLayout.AlignSelf="Center" WidthRequest="200" HeightRequest="200"/>-->
+                        <Label Text="Begin Your Claim" TextColor="#01aef0" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" FontSize="Large" FontAttributes="Bold" />
+                        <Grid ColumnSpacing="0" FlexLayout.AlignSelf="Stretch">
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Step 1:" Grid.Column="0" HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold" TextColor="#01aef0"/>
+                            <Label Text="Type or scan the Accessory Barcode found on the products that appears on the invoice. To add Multiple Barcodes, please click Add or the camera icon."  Grid.Column="1"  HorizontalOptions="Start"  FontSize="Medium"  TextColor="#01aef0"/>
+
+                        </Grid>
+ 
+                        <Grid FlexLayout.AlignSelf="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry x:Name="editProductNumber" x:FieldModifier="public" Placeholder="Enter barcode   "  Grid.Column="0" TextChanged="editProductNumber_TextChanged" BackgroundColor="#f2f2f2" TextColor="Black"/>
+                            <Label 
+                                
+                                
+                                  ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True"
+                            
+                                
+                                x:Name="btnScanI" FontSize="50"
+                                    
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.Camera}"
+                                     FontFamily="{StaticResource FontAwesomeSolid}"
+                                    
+                                    Grid.Column="1" BackgroundColor="Transparent"  TextColor="#01aef0" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ScanBarcodeClicked"/>
+                                </Label.GestureRecognizers>
+                                <ios:VisualElement.ShadowOffset>
+                                    <Size>
+                                        <x:Arguments>
+                                            <x:Double>5</x:Double>
+                                            <x:Double>7</x:Double>
+                                        </x:Arguments>
+                                    </Size>
+                                </ios:VisualElement.ShadowOffset>
+
+
+                            </Label>
+                            <Button x:Name="imageButton5"   ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True"
+                            
+                                 Clicked="AddClicked" Text="Add" Grid.Column="2" BackgroundColor="#01aef0"  TextColor="White" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
+
+                                <ios:VisualElement.ShadowOffset>
+                                    <Size>
+                                        <x:Arguments>
+                                            <x:Double>7</x:Double>
+                                            <x:Double>7</x:Double>
+                                        </x:Arguments>
+                                    </Size>
+                                </ios:VisualElement.ShadowOffset>
+                            </Button>
+
+                        </Grid>
+
+                        <Grid >
+
+                            <ScrollView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Both" FlexLayout.AlignSelf="Start">
+
+
+                                <Grid BackgroundColor="Black">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Empty" Grid.Row="0" Grid.Column="0" />
+                                    <AbsoluteLayout Grid.Column="0"
+                                Grid.Row="0"
+                                VerticalOptions="FillAndExpand" >
+                                        <ScrollView x:Name="colScrollView"
+                                Orientation="Horizontal"
+                                VerticalScrollBarVisibility="Never"
+                                HorizontalScrollBarVisibility="Never"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All">
+
+                                            <Grid BackgroundColor="#f2f2f2" x:Name="dataGridHeader">
+                                                <!--dynamic grid header-->
+                                            </Grid>
+                                        </ScrollView>
+                                        <!--<BoxView AbsoluteLayout.LayoutBounds="0,0,20,1"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    BackgroundColor="Transparent"></BoxView>-->
+                                    </AbsoluteLayout>
+
+
+
+                                    <AbsoluteLayout Grid.Column="0"
+                                    Grid.Row="1"
+                                    VerticalOptions="FillAndExpand">
+                                        <ScrollView x:Name="dataScrollView"
+                                    Orientation="Both"
+                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                    AbsoluteLayout.LayoutFlags="All">
+                                            <Grid BackgroundColor="#f2f2f2" x:Name="dataGrid">
+                                                <!--dynamic grid-->
+                                            </Grid>
+                                        </ScrollView>
+                                    </AbsoluteLayout>
+                                </Grid>
+
+
+
+                            </ScrollView>
+
+                        </Grid>
+
+                        <Grid FlexLayout.AlignSelf="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80*"/>
+                                <ColumnDefinition Width="20*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Entry x:Name="editInvoice" Placeholder="Enter invoice number"  BackgroundColor="#f2f2f2" TextColor="Black" Grid.Column="0"/>
+                            <Label 
+                                
+                                
+                                  ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True"
+                            
+                                
+                                x:Name="img"  FontSize="50"
+                                    
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.Camera}"
+                                     FontFamily="{StaticResource FontAwesomeSolid}"
+                                    
+                                    Grid.Column="1" BackgroundColor="Transparent"  TextColor="#01aef0" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CameraClicked"/>
+                                </Label.GestureRecognizers>
+                                <ios:VisualElement.ShadowOffset>
+                                    <Size>
+                                        <x:Arguments>
+                                            <x:Double>5</x:Double>
+                                            <x:Double>7</x:Double>
+                                        </x:Arguments>
+                                    </Size>
+                                </ios:VisualElement.ShadowOffset>
+
+
+                            </Label>
+
+                        </Grid>
+
+                        <Image x:Name="imageScan"></Image>
+                        <Button x:Name="btnClaim"   ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True"  Clicked="ClaimClicked" Text="Verify barcodes"  BorderColor="#555" BorderWidth="1" BackgroundColor="#01aef0"  TextColor="White" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>5</x:Double>
+                                        <x:Double>5</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+                        </Button>
+                        <Grid ColumnSpacing="0" FlexLayout.AlignSelf="Stretch" x:Name="textSteptwo">
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Step 2:" Grid.Column="0" HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold" TextColor="#01aef0"/>
+                            <Label Text="Please type the invoice number, then click on the camera icon to take a photo of the invoice. Once the photo of the invoice is captured, the application will verify it. If auto-verification fails you can still submit your claim for manual verification."  Grid.Column="1"  HorizontalOptions="Start" FontAttributes="None" FontSize="Medium"  TextColor="#01aef0"/>
+
+                        </Grid>
+                        <Button x:Name="buttonClaimAutoVerify"   ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True" Clicked="buttonAutoVerifyClicked" Text="Auto claim"  BorderColor="#555" BorderWidth="1" BackgroundColor="#01aef0"  TextColor="White" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>5</x:Double>
+                                        <x:Double>5</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+                        </Button>
+                        <Button x:Name="buttonClaimManual"  ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True" Clicked="buttonClaimManualClicked" Text="Manual"  BorderColor="Black" BorderWidth="1" BackgroundColor="#01aef0"  TextColor="White" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>5</x:Double>
+                                        <x:Double>5</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+                        </Button>
+
+                    </FlexLayout>
+                </AbsoluteLayout>
+            </ScrollView>
+
+            <local:FooterView VerticalOptions="End" HeightRequest="45" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+ 
+</ContentPage>

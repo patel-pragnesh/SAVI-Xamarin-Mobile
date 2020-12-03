@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SAVI.Views"
+             mc:Ignorable="d"
+             x:Class="SAVI.Views.Admin"
+             BackgroundColor="White"
+                xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             >
+    <ContentPage.Content>
+
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <AbsoluteLayout Margin="5,0">
+                    <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="20,0,20,0">
+                        <Label Text="Admin" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="Black"/>
+                        <Label Text="Celcom Account Number:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextCelcomAccountNumber" Placeholder="Username" FlexLayout.AlignSelf="Stretch" ReturnType="Next"  BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Trading Name:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextTradingName" Placeholder="Trading Name:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+
+                        <Label Text="Title:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Picker x:Name="TilePicker" Title="Title" BackgroundColor="White" TextColor="Black" FlexLayout.AlignSelf="Stretch">
+                            <Picker.Items >
+                                <x:String>Mr</x:String>
+                                <x:String>Mrs</x:String>
+                                <x:String>Miss</x:String>
+                                <x:String>Ms</x:String>
+                                <x:String>Dr</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        <Label Text="First Name:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextFirstName" Placeholder="First Name:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Middle Name:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextMiddleName" Placeholder="Middle Name:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Surname:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextSurname" Placeholder="Surname:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Cell Number:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextCellNumber" Placeholder="Cell Number:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Email:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextEmail" Placeholder="Email:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Brand Name:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextBrandName" Placeholder="Brand Name:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Store Name:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextStoreName" Placeholder="Store Name:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+
+                        <Label Text="Bank:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Picker x:Name="BankPicker" Title="Bank" FlexLayout.AlignSelf="Stretch" ItemsSource="{Binding Banks}" SelectedIndexChanged="BankPicker_SelectedIndexChanged" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedBank}"  BackgroundColor="#f2f2f2" TextColor="Black">
+                         
+                        </Picker>
+
+                        <Label Text="Account type:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Picker x:Name="AccountType" Title="Account Type:" BackgroundColor="#f2f2f2" TextColor="Black" FlexLayout.AlignSelf="Stretch">
+                            <Picker.Items >
+                                <x:String>Cheque</x:String>
+                                <x:String>Savings</x:String>
+                               
+                             
+                            </Picker.Items>
+                        </Picker>
+
+
+                        <Label Text="Branch Code:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextBranchCode" Placeholder="Branch Code:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Label Text="Account Number:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
+                        <Entry x:Name="editTextAccountNumber" Placeholder="Account Number" FlexLayout.AlignSelf="Stretch" ReturnType="Next" MaxLength="20" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+
+                        <Button x:Name="btnSave"  ios:VisualElement.IsShadowEnabled="true" Margin="0,30,0,0"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True" Text="Save" Clicked="btnSave_Clicked" BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" FlexLayout.AlignSelf="Stretch" BorderColor="Black" BorderWidth="1">
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>5</x:Double>
+                                        <x:Double>5</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+                        </Button>
+
+
+                    </FlexLayout>
+                </AbsoluteLayout>
+            </ScrollView>
+
+            <local:FooterView VerticalOptions="End" HeightRequest="45" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

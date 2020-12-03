@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>12.1</string>
+	<key>CFBundleDisplayName</key>
+	<string>SAVI</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.celcom.savi</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.5</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>CFBundleName</key>
+	<string>SAVI</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.5</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your app accesses the user&apos;s photo library</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string> Your app adds photos to the user&apos;s photo library</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access to scan barcodes</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome5BrandsRegular.otf</string>
+		<string>FontAwesome5Regular.otf</string>
+		<string>FontAwesome5Solid.otf</string>
+	</array>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>The app accesses to the phone calender</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The app needs to have location once in use Usage</string>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+</dict>
+</plist>

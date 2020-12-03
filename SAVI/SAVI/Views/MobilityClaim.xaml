@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SAVI.Views"
+             mc:Ignorable="d"
+             x:Class="SAVI.Views.MobilityClaim">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <AbsoluteLayout Margin="5,0">
+                    <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="20,0,20,0">
+                        <Label Text="Welcome to" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="Black"/>
+                        <Image x:Name="img_mobility_enduser" Source="mobility_end_user_logo.png" FlexLayout.AlignSelf="Center" WidthRequest="200" HeightRequest="200"/>
+                        <Label Text="Begin Your Claim" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                       
+                        <Grid FlexLayout.AlignSelf="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry x:Name="editTextStoreIMEI" Placeholder="Leave barcode"  Grid.Column="0" BackgroundColor="White" TextColor="Black"/>
+                            <Button x:Name="scanButton"  Text="ScanButton" Grid.Column="1" BackgroundColor="Transparent"  TextColor="#01aef0" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150"/>
+                        </Grid>
+  
+
+                    </FlexLayout>
+                </AbsoluteLayout>
+            </ScrollView>
+
+            <local:FooterView VerticalOptions="End" HeightRequest="45" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

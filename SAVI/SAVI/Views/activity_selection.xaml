@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SAVI.Views.activity_selection"
+             BackgroundColor="Transparent"
+           
+           
+             
+             >
+    <ContentPage.Content>
+        
+        <ScrollView>
+            <Grid >
+                <Image Source="mobilitybackground.jpg" 
+                      Aspect="AspectFill" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <AbsoluteLayout Margin="0,0">
+                <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="30,0,30,0">
+                    <Image Source="" WidthRequest="200" HeightRequest="200" FlexLayout.AlignSelf="Center"/>
+                        <Image Source=""  HeightRequest="70" FlexLayout.AlignSelf="Center"/>
+                        <Label Text="Click on Mobility" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="White"/>
+                    <ImageButton Source="mobility_logo_200.png"  WidthRequest="120" HeightRequest="120" Clicked="ImageButton_Clicked" HorizontalOptions="CenterAndExpand" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" CornerRadius="10" Padding="10" FlexLayout.AlignSelf="Center" />
+
+
+                    <ImageButton Source="mobility_logo_200.png"  WidthRequest="100" HeightRequest="100" IsVisible="false" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Stretch"/>
+
+                </FlexLayout>
+                </AbsoluteLayout>
+           </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

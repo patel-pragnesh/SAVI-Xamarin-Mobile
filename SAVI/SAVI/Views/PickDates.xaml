@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SAVI.Views"
+             x:Class="SAVI.Views.PickDates"
+             BackgroundColor="White"
+             
+                xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             >
+  
+    <ContentPage.Content>
+
+
+
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <AbsoluteLayout Margin="5,0">
+                    <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="20,0,20,0">
+                        <Label Text="Welcome to" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="#01aef0"/>
+                        <Label Text="Select Dates:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" FontSize="Large" FontAttributes="Bold" TextColor="#01aef0"/>
+                        <Label Text="From:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" FontSize="Large" FontAttributes="Bold" TextColor="#01aef0"/>
+
+                        <DatePicker x:Name="DateFromPicker" FlexLayout.AlignSelf="Stretch"  BackgroundColor="#f2f2f2" TextColor="Black"></DatePicker>
+
+                        <Label Text="To:"  HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" FontSize="Large" FontAttributes="Bold" TextColor="#01aef0"/>
+
+                        <DatePicker x:Name="DateToPicker" FlexLayout.AlignSelf="Stretch"  BackgroundColor="#f2f2f2" TextColor="Black" ></DatePicker>
+
+                        <Button x:Name="btnSelect" ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True" Text="Select"  Clicked="btnSelect_Clicked" BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" FlexLayout.AlignSelf="Stretch" BorderColor="Black" BorderWidth="1">
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>10</x:Double>
+                                        <x:Double>10</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+                        </Button>
+                        <ActivityIndicator x:Name="ActIndicator" IsVisible="False" Color="Black" IsRunning="False" IsEnabled="False" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50"/>
+
+                    </FlexLayout>
+                </AbsoluteLayout>
+            </ScrollView>
+
+            <local:FooterView VerticalOptions="End" HeightRequest="45" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

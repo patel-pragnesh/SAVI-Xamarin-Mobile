@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+             x:Class="SAVI.Views.ViewClaim">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Both" >
+            <AbsoluteLayout
+                                VerticalOptions="FillAndExpand" >
+                <ScrollView
+                                Orientation="Horizontal"
+                                VerticalScrollBarVisibility="Never"
+                                HorizontalScrollBarVisibility="Never"
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All">
+
+
+        <dg:DataGrid ItemsSource="{Binding ClaimsHistory}" SelectionEnabled="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+               RowHeight="70" HeaderHeight="50" BorderColor="#CCCCCC" HeaderBackground="#01aef0" HeaderFontSize="10"
+              >
+            <dg:DataGrid.HeaderFontSize>
+                <OnIdiom  x:TypeArguments="x:Double">
+                    <OnIdiom.Tablet>15</OnIdiom.Tablet>
+                    <OnIdiom.Phone>13</OnIdiom.Phone>
+                </OnIdiom>
+            </dg:DataGrid.HeaderFontSize>
+            <dg:DataGrid.Columns>
+                            <dg:DataGridColumn Title="Image"   Width="100">
+                                <dg:DataGridColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Label Text="{Binding InvoiceNumber}" IsVisible="false"/>
+                                            <Label Text="{Binding StoreID}" IsVisible="false"/>
+                                            <Label Text="View" TextColor="Red" HorizontalOptions="Center" VerticalOptions="Start"   >
+
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Tapped="OnTapGestureRecognizerTapped" />
+
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Grid>
+                                    </DataTemplate>
+                                </dg:DataGridColumn.CellTemplate>
+                            </dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Name" PropertyName="PromotionName" Width="150"/>
+                            <dg:DataGridColumn Title="Code" PropertyName="ProductCode" Width="150"/>
+                            <dg:DataGridColumn Title="Description" PropertyName="ProductDescription"  Width="150"/>
+                            <dg:DataGridColumn Title="Redemtion Date" PropertyName="RedemtionDate" Width="150"/>
+                            <dg:DataGridColumn Title="Invoice Number" PropertyName="InvoiceNumber" Width="150"/>
+                            <dg:DataGridColumn Title="Brand Name" PropertyName="BrandName"  Width="150"/>
+                            <dg:DataGridColumn Title="Store Name" PropertyName="StoreName"  Width="150"/>
+                            <dg:DataGridColumn Title="Store Rep" PropertyName="StoreRep"  Width="150"/>
+                            <dg:DataGridColumn Title="StoreRep MSISDN" PropertyName="StoreRepMSISDN"  Width="150"/>
+                            <dg:DataGridColumn Title="Imei" PropertyName="Imei"  Width="150"/>
+                            <dg:DataGridColumn Title="Latitude" PropertyName="SubmittedDeviceLocationLatitude"  Width="150"/>
+                            <dg:DataGridColumn Title="Longitude" PropertyName="SubmittedDeviceLocationLongitude"  Width="150"/>
+                            <dg:DataGridColumn Title="Retail Value" PropertyName="RetailValue"  Width="150"/>
+                            <dg:DataGridColumn Title="Verified" PropertyName="Verified"  Width="150"/>
+                            <dg:DataGridColumn Title="Disputed" PropertyName="Disputed"  Width="150"/>
+                            <dg:DataGridColumn Title="Paid" PropertyName="Paid"  Width="150"/>
+                            <dg:DataGridColumn Title="Verified Disputed Date" PropertyName="VerifiedDisputedDate"  Width="150"/>
+                            <dg:DataGridColumn Title="Auto Processed" PropertyName="AutoProcessed"  Width="150"/>
+                            <dg:DataGridColumn Title="Contact Name" PropertyName="ContactName"  Width="150"/>
+                            <dg:DataGridColumn Title="Contact Surname" PropertyName="ContactSurname"  Width="150"/>
+                            <dg:DataGridColumn Title="Contact MSISDN" PropertyName="ContactMSISDN"  Width="150"/>
+                            <dg:DataGridColumn Title="Contact Email" PropertyName="ContactEmail"  Width="150"/>
+                            <dg:DataGridColumn Title="No Stock" PropertyName="NoStock"  Width="150"/>
+                            <dg:DataGridColumn Title="Pin" PropertyName="Pin"  Width="150"/>
+                            <dg:DataGridColumn Title="Invoice Date Created" PropertyName="InvoiceDateCreated"  Width="150"/>
+                            <dg:DataGridColumn Title="Invoice Date Modified" PropertyName="InvoiceDateModified"  Width="150"/>
+                            <dg:DataGridColumn Title="Detect Count" PropertyName="DetectCount"  Width="150"/>
+                
+                        </dg:DataGrid.Columns>
+            <dg:DataGrid.RowsBackgroundColorPalette>
+                <dg:PaletteCollection>
+                    <Color>#F2F2F2</Color>
+                    <Color>#FFFFFF</Color>
+                </dg:PaletteCollection>
+            </dg:DataGrid.RowsBackgroundColorPalette>
+            
+        </dg:DataGrid>
+                    </ScrollView>
+
+                </AbsoluteLayout>
+            </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

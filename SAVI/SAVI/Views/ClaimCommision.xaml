@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SAVI.Views"
+             mc:Ignorable="d"
+             x:Class="SAVI.Views.ClaimCommision"
+             BackgroundColor="White">
+    <ContentPage.Content>
+
+
+
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <AbsoluteLayout Margin="5,0">
+                    <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="20,0,20,0">
+                        <!--<Label Text="Welcome to" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="Black"/>-->
+                       
+                        <Label Text="Claim Commission" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                        <Grid FlexLayout.AlignSelf="Start" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Commission Balance" Grid.Column="0" Grid.Row="0"  FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                            <Label  Grid.Column="1" Grid.Row="0" x:Name="CommisssionBalanceLabel"  FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+
+                        </Grid>
+
+                        <Entry x:Name="edtMSISDN1" Text="27829806555"  Placeholder="Cell Phone Number" FlexLayout.AlignSelf="Stretch" BackgroundColor="#f2f2f2" TextColor="Black"/>
+                        <Entry x:Name="edtMSISDN2" Text="27829806555" Placeholder="Re-enter Cell Phone Number"  FlexLayout.AlignSelf="Stretch" BackgroundColor="#f2f2f2" TextColor="Black"/>
+                        <Picker x:Name="spinPayementType" Title="Payment type"  ItemsSource="{Binding PaymentTypes}"  ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPtype}" BackgroundColor="#f2f2f2" TextColor="Black" >
+                            
+                            <!--<Picker.Items >
+                                <x:String>Airtime</x:String>
+                                <x:String>Electricity</x:String> SelectedItem="{Binding SelectedPtype}"
+                                <x:String>Pay to Bank</x:String>
+                            </Picker.Items>-->
+                        </Picker>
+                        <Grid FlexLayout.AlignSelf="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnNext" Text="Next" Clicked="btnNext_Clicked" Grid.Column="0"  BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" FlexLayout.AlignSelf="Stretch" BorderColor="Black" BorderWidth="1"/>
+                            <Button x:Name="btnHistory" Text="History" Clicked="btnHistory_Clicked" Grid.Column="1"  BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" FlexLayout.AlignSelf="Stretch" BorderColor="Black" BorderWidth="1"/>
+                        </Grid>
+                    </FlexLayout>
+                </AbsoluteLayout>
+            </ScrollView>
+
+            <local:FooterView VerticalOptions="End" HeightRequest="45" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

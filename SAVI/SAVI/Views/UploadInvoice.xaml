@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SAVI.Views"
+             mc:Ignorable="d"
+             x:Class="SAVI.Views.UploadInvoice"
+                xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             
+                 xmlns:fontawesome="clr-namespace:SAVI"
+             >
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <AbsoluteLayout Margin="5,0">
+                    <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="20,0,20,0">
+                        <Label Text="Welcome to" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="#01aef0"/>
+                        <Image x:Name="img_mobility_enduser" Source="mobility_end_user_logo.png" FlexLayout.AlignSelf="Center" WidthRequest="200" HeightRequest="200"/>
+                        <Label Text="Invoice" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" FontSize="Large" FontAttributes="Bold" TextColor="#01aef0"/>
+
+                        <Label 
+                            
+                             ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True"
+                            
+                            
+                            HeightRequest="40" BackgroundColor="Transparent"   Text="{x:Static fontawesome:FontAwesomeIcons.Camera}"
+                                     FontFamily="{StaticResource FontAwesomeSolid}"
+                                 FontSize="50"  Grid.Row="1"   TextColor="#01aef0" HorizontalOptions="End" Padding="0" FlexLayout.AlignSelf="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Button_Clicked"/>
+                            </Label.GestureRecognizers>
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>5</x:Double>
+                                        <x:Double>5</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+
+                        </Label>
+                        <Entry x:Name="editInvoiceNumber" Placeholder="Please enter Invoice Number"  FlexLayout.AlignSelf="Stretch" BackgroundColor="#f2f2f2" TextColor="Black"/>
+
+                        <Button Text="Upload"  ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True" Clicked="Button_Clicked_1" FontSize="Medium"  BorderWidth="1"  Grid.Row="1" BackgroundColor="#01aef0" CornerRadius="10" FlexLayout.AlignSelf="Stretch" TextColor="White" FontAttributes="Bold" >
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>7</x:Double>
+                                        <x:Double>5</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+                        </Button>
+
+                        <Image x:Name="PhotoImage" />
+                      
+                    </FlexLayout>
+                </AbsoluteLayout>
+            </ScrollView>
+
+            <local:FooterView VerticalOptions="End" HeightRequest="45" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

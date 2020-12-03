@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAVI.Views.Electricity2"
+               xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Label 
+                x:Name="textViewAddress"
+                Text="Provider:"
+                 />
+
+            <CheckBox x:Name="checkBox" />
+
+            <Button x:Name="buttonFinish"     ios:VisualElement.IsShadowEnabled="true" FontSize="Medium"  BorderWidth="1"  BackgroundColor="#01aef0" CornerRadius="10" HeightRequest="40" WidthRequest="60"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True"  Text="Next" Clicked="buttonFinish_Clicked">
+
+                <ios:VisualElement.ShadowOffset>
+                    <Size>
+                        <x:Arguments>
+                            <x:Double>7</x:Double>
+                            <x:Double>7</x:Double>
+                        </x:Arguments>
+                    </Size>
+                </ios:VisualElement.ShadowOffset>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

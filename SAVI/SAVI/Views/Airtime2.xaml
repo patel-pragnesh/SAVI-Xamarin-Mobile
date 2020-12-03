@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAVI.Views.Airtime2"
+             
+                xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton  x:Name="AirtimeButton" HeightRequest="100" WidthRequest="100" Clicked="AirtimeButton_Clicked" Grid.Column="0"/>
+                <ImageButton x:Name="DataButton" HeightRequest="100" WidthRequest="100" Clicked="DataButton_Clicked" Grid.Column="1"/>
+            </Grid>
+
+            <Picker x:Name="DataBoundlePicker" Title="Bundles"  ItemsSource="{Binding GetProductResponseDataBundles}" SelectedIndexChanged="DataBounblePicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding TSSProductBundleName}" SelectedItem="{Binding SelectedBundle}" BackgroundColor="#01aef0">
+
+            </Picker>
+            <Entry x:Name="AirtimeAmountEntry" Placeholder="Please enter an Amount!" BackgroundColor="#f2f2f2" TextColor="Black" Keyboard="Numeric"/>
+            <Button x:Name="FinishButton"    ios:VisualElement.IsShadowEnabled="true" BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" HeightRequest="40" WidthRequest="60" 
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True" Text="Claim" Clicked="FinishButton_Clicked">
+
+                <ios:VisualElement.ShadowOffset>
+                    <Size>
+                        <x:Arguments>
+                            <x:Double>7</x:Double>
+                            <x:Double>7</x:Double>
+                        </x:Arguments>
+                    </Size>
+                </ios:VisualElement.ShadowOffset>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
