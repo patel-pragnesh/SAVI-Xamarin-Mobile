@@ -32,7 +32,7 @@
 
 
                         <Label Text="Title:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
-                        <Picker x:Name="TilePicker" Title="Title" BackgroundColor="White" TextColor="Black" FlexLayout.AlignSelf="Stretch">
+                        <Picker x:Name="TilePicker" Title="Title" TitleColor="Black" BackgroundColor="#f2f2f2" TextColor="Black" FlexLayout.AlignSelf="Stretch">
                             <Picker.Items >
                                 <x:String>Mr</x:String>
                                 <x:String>Mrs</x:String>
@@ -65,12 +65,12 @@
 
 
                         <Label Text="Bank:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
-                        <Picker x:Name="BankPicker" Title="Bank" FlexLayout.AlignSelf="Stretch" ItemsSource="{Binding Banks}" SelectedIndexChanged="BankPicker_SelectedIndexChanged" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedBank}"  BackgroundColor="#f2f2f2" TextColor="Black">
+                        <Picker x:Name="BankPicker" Title="Bank" TitleColor="Black" FlexLayout.AlignSelf="Stretch" ItemsSource="{Binding Banks}" SelectedIndexChanged="BankPicker_SelectedIndexChanged" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedBank}"  BackgroundColor="#f2f2f2" TextColor="Black">
                          
                         </Picker>
 
                         <Label Text="Account type:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
-                        <Picker x:Name="AccountType" Title="Account Type:" BackgroundColor="#f2f2f2" TextColor="Black" FlexLayout.AlignSelf="Stretch">
+                        <Picker x:Name="AccountType" Title="Account Type:" TitleColor="Black" BackgroundColor="#f2f2f2" TextColor="Black" FlexLayout.AlignSelf="Stretch">
                             <Picker.Items >
                                 <x:String>Cheque</x:String>
                                 <x:String>Savings</x:String>

@@ -30,7 +30,7 @@
                                         <Grid>
                                             <Label Text="{Binding InvoiceNumber}" IsVisible="false"/>
                                             <Label Text="{Binding StoreID}" IsVisible="false"/>
-                                            <Label Text="View" TextColor="Red" HorizontalOptions="Center" VerticalOptions="Start"   >
+                                            <Label Text="View Claim" TextColor="#01aef0" TextDecorations="Underline" HorizontalOptions="Center" VerticalOptions="Center"   >
 
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer

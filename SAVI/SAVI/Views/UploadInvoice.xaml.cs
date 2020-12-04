@@ -173,7 +173,7 @@ namespace SAVI.Views
             if (result.ToUpper()=="SUCCESS")
             {
                await  Application.Current.MainPage.Navigation.PopAsync(); //Remove the page currently on top.
-                CrossToastPopUp.Current.ShowToastMessage("Upload invoice is succesfull!");
+                CrossToastPopUp.Current.ShowToastMessage("Upload invoice is succesful !");
             }
             else
             {

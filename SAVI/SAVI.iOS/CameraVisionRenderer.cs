@@ -34,6 +34,8 @@ namespace SAVI.iOS.Renderers
 
             _page.ShowDocumentViewController += ShowDocumentViewController;
 
+            _page.CancelDocumentViewController += CancelDocumentViewController;
+
             _page.ShowBarcodeDocumentViewController += ShowBarcodeDocumentViewController;
         }
 
@@ -69,6 +71,12 @@ namespace SAVI.iOS.Renderers
            
             PresentViewController(cameraViewController, true, null);
         }
+
+        public void CancelDocumentViewController()
+        {
+            DismissViewController(true, null);
+        }
+
 
         [Export("documentCameraViewControllerDidCancel:")]
         public void DidCancel(VNDocumentCameraViewController controller)

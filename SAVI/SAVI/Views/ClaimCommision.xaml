@@ -23,24 +23,22 @@
                 <AbsoluteLayout Margin="5,0">
                     <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="20,0,20,0">
                         <!--<Label Text="Welcome to" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="Black"/>-->
-                       
-                        <Label Text="Claim Commission" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
-                        <Grid FlexLayout.AlignSelf="Start" >
+
+                        <Label Text="Claim Commission" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" FontSize="Large" FontAttributes="Bold" TextColor="#01aef0"/>
+                        <Grid  HorizontalOptions="CenterAndExpand">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="80"/>
                             </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                            </Grid.RowDefinitions>
-                            <Label Text="Commission Balance" Grid.Column="0" Grid.Row="0"  FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
-                            <Label  Grid.Column="1" Grid.Row="0" x:Name="CommisssionBalanceLabel"  FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                          
+                            <Label Text="Commission Balance" HorizontalOptions="Start" Grid.Column="0"   FontSize="Small" FontAttributes="Bold" TextColor="#01aef0"/>
+                            <Label  Grid.Column="1" x:Name="CommisssionBalanceLabel" HorizontalOptions="CenterAndExpand"  FontSize="Small" FontAttributes="Bold" TextColor="#01aef0"/>
 
                         </Grid>
 
-                        <Entry x:Name="edtMSISDN1" Text="27829806555"  Placeholder="Cell Phone Number" FlexLayout.AlignSelf="Stretch" BackgroundColor="#f2f2f2" TextColor="Black"/>
-                        <Entry x:Name="edtMSISDN2" Text="27829806555" Placeholder="Re-enter Cell Phone Number"  FlexLayout.AlignSelf="Stretch" BackgroundColor="#f2f2f2" TextColor="Black"/>
-                        <Picker x:Name="spinPayementType" Title="Payment type"  ItemsSource="{Binding PaymentTypes}"  ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPtype}" BackgroundColor="#f2f2f2" TextColor="Black" >
+                        <Entry x:Name="edtMSISDN1"   Placeholder="Cell Phone Number" PlaceholderColor="Black" FlexLayout.AlignSelf="Stretch" BackgroundColor="#f2f2f2" TextColor="Black"/>
+                        <Entry x:Name="edtMSISDN2"  Placeholder="Re-enter Cell Phone Number" PlaceholderColor="Black" FlexLayout.AlignSelf="Stretch" BackgroundColor="#f2f2f2" TextColor="Black"/>
+                        <Picker x:Name="spinPayementType" Title="Select Payment Type" TitleColor="#01aef0" ItemsSource="{Binding PaymentTypes}"  ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedPtype}" BackgroundColor="#f2f2f2" TextColor="Black" >
                             
                             <!--<Picker.Items >
                                 <x:String>Airtime</x:String>

@@ -37,6 +37,7 @@ namespace SAVI
         public string filePath { get; set; }
         public MediaFile ImageFile { get; set; }
         public Action ShowDocumentViewController;
+        public Action CancelDocumentViewController;
         public Action ShowBarcodeDocumentViewController;
         public TextRecognitionLevelEnum TextRecognitionLevel;
         List<String> UniqueBarcode;
@@ -777,6 +778,8 @@ namespace SAVI
                     editProductNumber.Text = string.Empty;
                     CrossToastPopUp.Current.ShowToastError(validVoucherAndPromotion2Reply.IdValue.Value, Plugin.Toast.Abstractions.ToastLength.Long);
 
+                    CancelDocumentViewController.Invoke();
+  
                 }
             }
         }

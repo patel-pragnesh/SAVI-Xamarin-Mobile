@@ -36,7 +36,7 @@ namespace SAVI.Views
 
             CommisssionBalanceLabel.Text = "R" + balance;
 
-            spinPayementType.SelectedIndex = 0;
+            //spinPayementType.SelectedIndex = 0;
         }
        
         public ClaimCommision()

@@ -7,8 +7,8 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              >
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
+        <StackLayout Margin="30,30,30,30">
+            <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="50*"/>
@@ -17,11 +17,11 @@
                 <ImageButton x:Name="DataButton" HeightRequest="100" WidthRequest="100" Clicked="DataButton_Clicked" Grid.Column="1"/>
             </Grid>
 
-            <Picker x:Name="DataBoundlePicker" Title="Bundles"  ItemsSource="{Binding GetProductResponseDataBundles}" SelectedIndexChanged="DataBounblePicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding TSSProductBundleName}" SelectedItem="{Binding SelectedBundle}" BackgroundColor="#01aef0">
+            <Picker Margin="0,30,0,0" x:Name="DataBoundlePicker" Title="Select Data Bundles" TitleColor="Black" ItemsSource="{Binding GetProductResponseDataBundles}" SelectedIndexChanged="DataBounblePicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding TSSProductBundleName}" SelectedItem="{Binding SelectedBundle}" BackgroundColor="#01aef0">
 
             </Picker>
-            <Entry x:Name="AirtimeAmountEntry" Placeholder="Please enter an Amount!" BackgroundColor="#f2f2f2" TextColor="Black" Keyboard="Numeric"/>
-            <Button x:Name="FinishButton"    ios:VisualElement.IsShadowEnabled="true" BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" HeightRequest="40" WidthRequest="60" 
+            <Entry Margin="0,30,0,0" x:Name="AirtimeAmountEntry" Placeholder="Please enter an Amount!" BackgroundColor="#f2f2f2" TextColor="Black" Keyboard="Numeric"/>
+            <Button Margin="0,30,0,0" x:Name="FinishButton"    ios:VisualElement.IsShadowEnabled="true" BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" HeightRequest="40" WidthRequest="60" 
                                 ios:VisualElement.ShadowColor="Gray"
                                 ios:VisualElement.ShadowOpacity="0.7"
                                 ios:VisualElement.ShadowRadius="10"

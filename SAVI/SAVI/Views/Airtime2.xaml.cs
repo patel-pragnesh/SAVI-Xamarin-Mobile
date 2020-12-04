@@ -1,5 +1,6 @@
 ﻿using Plugin.Toast;
 using SAVI.com.celcom.savi;
+using SAVI.Models;
 using SAVI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace SAVI.Views
         protected override void OnAppearing()
         {
 
-            DataBoundlePicker.SelectedIndex = 0;
+            //DataBoundlePicker.SelectedIndex = 0;
 
         }
 
@@ -46,7 +47,10 @@ namespace SAVI.Views
 
           var ListGetProductResponseDataBundle= App.SoapService.GetAllDataBundles(network, "Data").ListOfDataBundles;
 
-           
+            //GetProductResponseDataBundles getProductResponseDataBundles = new GetProductResponseDataBundles();
+            //getProductResponseDataBundles.ProductName = "Select Data Bundle...";
+            //ListGetProductResponseDataBundle.Add(getProductResponseDataBundles);
+        
             for (int i = 0; i < ListGetProductResponseDataBundle.Count; ++i)
             {
                 MyViewModel.GetProductResponseDataBundles.Add(ListGetProductResponseDataBundle[i]);
@@ -147,6 +151,11 @@ namespace SAVI.Views
                         DataBoundlePicker.Focus();
                         return;
                     }
+                    //if (MyViewModel.SelectedBundle.ProductName == "Select Data Bundle...")
+                    //{
+                    //    DataBoundlePicker.Focus();
+                    //    return;
+                    //}
                     if (DataBoundlePicker.IsVisible)
                     {
                         String transactionRef = "SAVIValidate_" + DateTime.Now.Millisecond.ToString();
