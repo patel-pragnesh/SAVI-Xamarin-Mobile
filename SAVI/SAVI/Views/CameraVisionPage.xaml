@@ -58,7 +58,7 @@
                                 <ColumnDefinition Width="20*"/>
                                 <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
-                            <Entry x:Name="editProductNumber" x:FieldModifier="public" Placeholder="Enter barcode   "  Grid.Column="0" TextChanged="editProductNumber_TextChanged" BackgroundColor="#f2f2f2" TextColor="Black"/>
+                            <Entry x:Name="editProductNumber" x:FieldModifier="public" Placeholder="Please enter barcode   "  Grid.Column="0" TextChanged="editProductNumber_TextChanged" BackgroundColor="#f2f2f2" TextColor="Black"/>
                             <Label 
                                 
                                 
@@ -172,7 +172,7 @@
                                 <ColumnDefinition Width="20*"/>
 
                             </Grid.ColumnDefinitions>
-                            <Entry x:Name="editInvoice" Placeholder="Enter invoice number"  BackgroundColor="#f2f2f2" TextColor="Black" Grid.Column="0"/>
+                            <Entry x:Name="editInvoice" Placeholder="Please enter invoice number"  BackgroundColor="#f2f2f2" TextColor="Black" Grid.Column="0"/>
                             <Label 
                                 
                                 

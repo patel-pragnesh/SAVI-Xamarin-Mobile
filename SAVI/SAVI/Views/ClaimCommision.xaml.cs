@@ -47,33 +47,34 @@ namespace SAVI.Views
 
             if (string.IsNullOrWhiteSpace(edtMSISDN1.Text))
                 {
-                CrossToastPopUp.Current.ShowToastMessage("Please enter a valid MSISDN number");
+                CrossToastPopUp.Current.ShowToastMessage("Please enter a valid cellphone number");
                 edtMSISDN1.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(edtMSISDN2.Text))
             {
-                CrossToastPopUp.Current.ShowToastMessage("Please enter a valid MSISDN number");
+                CrossToastPopUp.Current.ShowToastMessage("Please re-enter a valid cellphone number");
                 edtMSISDN2.Focus();
+                return;
+            }
+            if (edtMSISDN2.Text != edtMSISDN1.Text)
+            {
+                CrossToastPopUp.Current.ShowToastMessage("Cellpbone numbers do not match.");
                 return;
             }
             if ((edtMSISDN1.Text.Trim().Length < 10) || (edtMSISDN1.Text.Trim().Length > 11))
             {
-                CrossToastPopUp.Current.ShowToastMessage("Please enter a valid MSISDN number");
+                CrossToastPopUp.Current.ShowToastMessage("Please enter a valid cellphone number");
                 edtMSISDN1.Focus();
                 return;
             }
             if ((edtMSISDN2.Text.Trim().Length < 10) || (edtMSISDN2.Text.Trim().Length > 11))
             {
-                CrossToastPopUp.Current.ShowToastMessage("Please enter a valid MSISDN number");
+                CrossToastPopUp.Current.ShowToastMessage("Please enter a valid cellphone number");
                 edtMSISDN2.Focus();
                 return;
             }
-            if (edtMSISDN2.Text != edtMSISDN2.Text)
-            {
-                CrossToastPopUp.Current.ShowToastMessage("The cell pbone number is not matched!");
-                return;
-            }
+            
             if (MyViewModel.SelectedPtype == null)
             {
                 CrossToastPopUp.Current.ShowToastMessage("Please select a payment type!");

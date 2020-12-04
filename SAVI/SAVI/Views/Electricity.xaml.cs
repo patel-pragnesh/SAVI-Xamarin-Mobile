@@ -90,6 +90,12 @@ namespace SAVI.Views
                 CrossToastPopUp.Current.ShowToastMessage("Provider error! Please try again later.");
                 return;
             }
+            if (MyViewModel.SelectedProductList ==null)
+            {
+                CrossToastPopUp.Current.ShowToastMessage("Please select Municipality!");
+                ElectricityPicker.Focus();
+                return;
+            }
 
             String transactionRef = "SAVIValidate_" + DateTime.Now.Millisecond.ToString();
             try

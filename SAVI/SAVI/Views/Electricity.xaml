@@ -8,12 +8,12 @@
              >
     <ContentPage.Content>
         <StackLayout  Padding="30,30,30,30">
-            <Picker x:Name="ElectricityPicker" Title="Select Electricity" TitleColor="Black" ItemsSource="{Binding ProductLists}" SelectedIndexChanged="ElectricityPicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding ProductName}" SelectedItem="{Binding SelectedProductList}" BackgroundColor="#f2f2f2" TextColor="Black">
+            <Picker x:Name="ElectricityPicker" Title="Select Municipality" TitleColor="Black" ItemsSource="{Binding ProductLists}" SelectedIndexChanged="ElectricityPicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding ProductName}" SelectedItem="{Binding SelectedProductList}" BackgroundColor="#f2f2f2" TextColor="Black">
 
             </Picker>
 
-            <Entry x:Name="editMeter" Placeholder="Please enter an Meter!" BackgroundColor="#f2f2f2" TextColor="Black"/>
-            <Entry x:Name="editAmount" Placeholder="Please enter an Amount!" BackgroundColor="#f2f2f2" TextColor="Black" Keyboard="Numeric"/>
+            <Entry x:Name="editMeter" Placeholder="Please enter a meter number" BackgroundColor="#f2f2f2" TextColor="Black"/>
+            <Entry x:Name="editAmount" Placeholder="Please enter an amount" BackgroundColor="#f2f2f2" TextColor="Black" Keyboard="Numeric"/>
             <Button x:Name="buttonNext" 
                     
                      ios:VisualElement.IsShadowEnabled="true"
