@@ -252,7 +252,7 @@
                                 ios:VisualElement.ShadowOpacity="0.7"
                                 ios:VisualElement.ShadowRadius="10"
                                 android:VisualElement.Elevation="10"
-                                android:Button.UseDefaultShadow="True" Clicked="buttonClaimManualClicked" Text="Manual"  BorderColor="Black" BorderWidth="1" BackgroundColor="#01aef0"  TextColor="White" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
+                                android:Button.UseDefaultShadow="True" Clicked="buttonClaimManualClicked" Text="Submit Manual"  BorderColor="Black" BorderWidth="1" BackgroundColor="#01aef0"  TextColor="White" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150">
                             <ios:VisualElement.ShadowOffset>
                                 <Size>
                                     <x:Arguments>

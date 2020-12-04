@@ -243,9 +243,9 @@ namespace SAVI.Views
 
             if (RegisteredBankingdetailStatus.ToUpper().Trim() != "TRUE")
             {
-                var pageMessage = new ShowMessagePopupPage("Something Wrong!, It is not Registered.");
+                var pageMessage = new ShowMessagePopupPage("Something went wrong at add/update bank detail!");
                 PopupNavigation.Instance.PushAsync(pageMessage);
-              
+                return;
             }
 
 
@@ -254,9 +254,15 @@ namespace SAVI.Views
             bool RegisteredUpdateRegistrationV5 = App.SoapService.UpdateRegistrationV5(SAVIApplication.mRegistrationID.ToString(), editTextTradingName.Text, editTextFirstName.Text, editTextSurname.Text, "ID", "", editTextCellNumber.Text, editTextEmail.Text, Preferences.Get(Globals.STORE_ID, ""), SAVIApplication.mCompanyID.ToString(), MyViewModel.SelectedBank.ID, TilePicker.SelectedItem.ToString(), editTextMiddleName.Text, nationality);
             if (!RegisteredUpdateRegistrationV5)
             {
-                var pageMessage = new ShowMessagePopupPage("Something Wrong!, It is not Registered.");
+                var pageMessage = new ShowMessagePopupPage("Something went wrong at add/update registration!");
                 PopupNavigation.Instance.PushAsync(pageMessage);
-
+                return;
+            }
+            else
+            {
+                var pageMessage = new ShowMessagePopupPage("Saved successfully!");
+                PopupNavigation.Instance.PushAsync(pageMessage);
+                Navigation.PopAsync();
             }
 
 

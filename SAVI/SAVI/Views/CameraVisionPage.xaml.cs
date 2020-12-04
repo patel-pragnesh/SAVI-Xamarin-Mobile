@@ -392,13 +392,19 @@ namespace SAVI
 
                                 if (AutoValidated)
                                 {
-                                    CrossToastPopUp.Current.ShowToastMessage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
+                                    var pageMessage = new ShowMessagePopupPage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
+                                    PopupNavigation.Instance.PushAsync(pageMessage);
+                                //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
                                 }
                                 else
                                 {
-                                    CrossToastPopUp.Current.ShowToastMessage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
-                                }
+                                    var pageMessage = new ShowMessagePopupPage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
+                                    PopupNavigation.Instance.PushAsync(pageMessage);
 
+                                //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
+                                }
+                                //CancelDocumentViewController.Invoke();
+                                this.Navigation.PopAsync();
                             }
                         }
                     }
@@ -646,12 +652,19 @@ namespace SAVI
                     editInvoice.IsVisible = true;
                     img.IsVisible = true;
                     btnScanI.IsVisible = true;
-
-                    if (barCodeExistance && !InvExistance) await DisplayAlert("", "Invoice number is not found. Barcode(s) is/are found. Your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.", "OK");
-                    if (!barCodeExistance && InvExistance) await DisplayAlert("", "Invoice number is found and One/more Barcode(s) is/are not found. Your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.", "OK");
-                    if (barCodeExistance && InvExistance) await DisplayAlert("", "Invoice number and barcode(s) are found but your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.", "OK");
-                    if (!barCodeExistance && !InvExistance) await DisplayAlert("", "Invoice number and barcode(s) are not found and  your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.", "OK");
-
+                    string messageDiolgue = string.Empty;
+                    if (barCodeExistance && !InvExistance)  messageDiolgue = "Invoice number is not found. Barcode(s) is/are found. Your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.";
+                    if (!barCodeExistance && InvExistance) messageDiolgue = "Invoice number is found and One/more Barcode(s) is/are not found. Your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.";
+                    if (barCodeExistance && InvExistance) messageDiolgue = "Invoice number and barcode(s) are found but your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.";
+                    if (!barCodeExistance && !InvExistance) messageDiolgue = "Invoice number and barcode(s) are not found and  your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.";
+                    bool answer = await DisplayAlert("", messageDiolgue, "OK", "Manual Submit");
+                    if (!answer)
+                    {
+                        continueclaim(AutoValidated);
+                        
+                    }
+                    
+                        
                 }
             }
             else

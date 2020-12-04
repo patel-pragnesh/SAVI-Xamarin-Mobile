@@ -4,11 +4,6 @@ using Rg.Plugins.Popup.Services;
 using SAVI.com.celcom.savi;
 using SAVI.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

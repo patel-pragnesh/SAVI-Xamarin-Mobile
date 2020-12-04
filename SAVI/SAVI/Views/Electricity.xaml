@@ -8,7 +8,7 @@
              >
     <ContentPage.Content>
         <StackLayout  Padding="30,30,30,30">
-            <Picker x:Name="ElectricityPicker" Title="Electricity"  ItemsSource="{Binding ProductLists}" SelectedIndexChanged="ElectricityPicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding ProductName}" SelectedItem="{Binding SelectedProductList}" BackgroundColor="#f2f2f2" TextColor="Black">
+            <Picker x:Name="ElectricityPicker" Title="Select Electricity" TitleColor="Black" ItemsSource="{Binding ProductLists}" SelectedIndexChanged="ElectricityPicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding ProductName}" SelectedItem="{Binding SelectedProductList}" BackgroundColor="#f2f2f2" TextColor="Black">
 
             </Picker>
 

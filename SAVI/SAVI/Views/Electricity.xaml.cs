@@ -24,7 +24,7 @@ namespace SAVI.Views
         protected override void OnAppearing()
         {
 
-            ElectricityPicker.SelectedIndex = 0;
+          //  ElectricityPicker.SelectedIndex = 0;
         }
 
 
