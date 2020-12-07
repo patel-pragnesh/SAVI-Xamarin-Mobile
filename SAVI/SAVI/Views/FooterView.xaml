@@ -6,6 +6,8 @@
              mc:Ignorable="d"
              x:Class="SAVI.Views.FooterView">
   <ContentView.Content>
-        <Label HeightRequest="42" VerticalTextAlignment="Center" Text="Powered by Celcom" TextColor="White"  FontSize="Large" HorizontalTextAlignment="Center" BackgroundColor="#01aef0"/>
-  </ContentView.Content>
+        <Frame  BackgroundColor="#01aef0" HeightRequest="42" BorderColor="White" Padding="0">
+            <Label VerticalTextAlignment="Center" Text="Powered by Celcom" TextColor="White"  FontSize="Large" HorizontalTextAlignment="Center"  />
+        </Frame>
+    </ContentView.Content>
 </ContentView>

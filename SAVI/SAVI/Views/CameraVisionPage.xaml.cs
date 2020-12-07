@@ -789,7 +789,10 @@ namespace SAVI
                 else
                 {
                     editProductNumber.Text = string.Empty;
-                    CrossToastPopUp.Current.ShowToastError(validVoucherAndPromotion2Reply.IdValue.Value, Plugin.Toast.Abstractions.ToastLength.Long);
+                   // CrossToastPopUp.Current.ShowToastError(validVoucherAndPromotion2Reply.IdValue.Value, Plugin.Toast.Abstractions.ToastLength.Long);
+
+                    var pageMessage = new ShowMessagePopupPage(validVoucherAndPromotion2Reply.IdValue.Value);
+                    PopupNavigation.Instance.PushAsync(pageMessage);
 
                     CancelDocumentViewController.Invoke();
   

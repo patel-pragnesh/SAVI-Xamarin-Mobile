@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="SAVI.Views.activity_selection"
              BackgroundColor="Transparent"
-           
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
            
              
              >
@@ -21,13 +22,33 @@
                 <FlexLayout JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Center" Margin="30,0,30,0">
                     <Image Source="" WidthRequest="200" HeightRequest="200" FlexLayout.AlignSelf="Center"/>
                         <Image Source=""  HeightRequest="70" FlexLayout.AlignSelf="Center"/>
-                        <Label Text="Click on Mobility" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Center" TextColor="White"/>
-                    <ImageButton Source="mobility_logo_200.png"  WidthRequest="120" HeightRequest="120" Clicked="ImageButton_Clicked" HorizontalOptions="CenterAndExpand" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" CornerRadius="10" Padding="10" FlexLayout.AlignSelf="Center" />
+                        <!--<Frame OutlineColor="#01aef0" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Auto">
+                            <Label Text="Click on the Mobility Icon below to login" HorizontalOptions="CenterAndExpand" />
+                        </Frame>-->
+                        <Label  HorizontalOptions="Center" FlexLayout.AlignSelf="Auto" TextColor="White" Text="Click below icon to login"  FontSize="20" FontAttributes="Bold"   />
+                        <ImageButton Source="mobility_logo_200.png"     ios:VisualElement.IsShadowEnabled="true"
+                                ios:VisualElement.ShadowColor="Gray"
+                                ios:VisualElement.ShadowOpacity="0.7"
+                                ios:VisualElement.ShadowRadius="10"
+                                android:VisualElement.Elevation="10"
+                                android:Button.UseDefaultShadow="True"
+                                     WidthRequest="120" HeightRequest="120" Clicked="ImageButton_Clicked" HorizontalOptions="CenterAndExpand" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" CornerRadius="10" Padding="10" FlexLayout.AlignSelf="Center" >
+
+                            <ios:VisualElement.ShadowOffset>
+                                <Size>
+                                    <x:Arguments>
+                                        <x:Double>7</x:Double>
+                                        <x:Double>7</x:Double>
+                                    </x:Arguments>
+                                </Size>
+                            </ios:VisualElement.ShadowOffset>
+
+                        </ImageButton>
 
 
-                    <ImageButton Source="mobility_logo_200.png"  WidthRequest="100" HeightRequest="100" IsVisible="false" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Stretch"/>
+               
 
-                </FlexLayout>
+                    </FlexLayout>
                 </AbsoluteLayout>
            </Grid>
         </ScrollView>
