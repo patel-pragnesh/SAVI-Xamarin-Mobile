@@ -15,13 +15,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="250" />
                 <RowDefinition Height="20" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <CarouselView HeightRequest="250" Grid.Row="0"
+            <CarouselView   Grid.Row="0" 
                             x:Name="TheCarousel"
                             AbsoluteLayout.LayoutBounds="0,0,1,1"
                             AbsoluteLayout.LayoutFlags="All"

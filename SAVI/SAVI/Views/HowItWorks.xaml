@@ -2,14 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:video="clr-namespace:FormsVideoLibrary"
              x:Class="SAVI.Views.HowItWorks">
-    <ContentPage.Content>
-        <StackLayout>
-            <!--<MediaElement x:Name="mediaElement"
-                         AutoPlay="True"
-                          VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="CenterAndExpand" 
-                          Source="ms-appx:///howitworks.mp4"
-                       />-->
+  
+       
             <video:VideoPlayer>
                 <video:VideoPlayer.Source>
                     <video:ResourceVideoSource>
@@ -17,12 +11,11 @@
                             <OnPlatform x:TypeArguments="x:String">
                                 <On Platform="iOS" Value="Videos/howitworks.mp4" />
                                 <On Platform="Android" Value="howitworks.mp4" />
-                                <On Platform="UWP" Value="Videos/howitworks.mp4" />
                             </OnPlatform>
                         </video:ResourceVideoSource.Path>
                     </video:ResourceVideoSource>
                 </video:VideoPlayer.Source>
             </video:VideoPlayer>
-        </StackLayout>
-    </ContentPage.Content>
+       
+   
 </ContentPage>

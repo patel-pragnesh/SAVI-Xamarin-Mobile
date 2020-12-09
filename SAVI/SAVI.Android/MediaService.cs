@@ -13,17 +13,26 @@ namespace SAVI.Droid
     public class MediaService : IMediaService
     {
         Context CurrentContext => CrossCurrentActivity.Current.Activity;
+
+        [System.Obsolete]
         public void SaveImageFromByte(string filename, byte[] imageByte)
         {
             try
             {
-                Java.IO.File storagePath = Environment.GetExternalStoragePublicDirectory(Environment.DirectoryPictures+"/personalMobility");
-
-                if (!Directory.Exists(Environment.DirectoryPictures + "/personalMobility")) Directory.CreateDirectory(Environment.DirectoryPictures + "/personalMobility");
+                //   Java.IO.File storagePath = Environment.GetExternalStoragePublicDirectory(Environment.DirectoryPictures+"/personalMobility");
 
 
-                string path = System.IO.Path.Combine(storagePath.ToString(), filename);
-                System.IO.File.WriteAllBytes(path, imageByte);
+                //     var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "count.txt");
+                //using (var writer = File.CreateText(backingFile))
+                //{
+                //    await writer.WriteLineAsync(count.ToString());
+                //}
+
+                if (!Directory.Exists(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/personalMobility")) Directory.CreateDirectory(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/personalMobility");
+
+
+                string path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/personalMobility", filename);
+                System.IO.File.WriteAllBytesAsync(path, imageByte);
                 var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
                 mediaScanIntent.SetData(Uri.FromFile(new Java.IO.File(path)));
                 CurrentContext.SendBroadcast(mediaScanIntent);
@@ -34,16 +43,16 @@ namespace SAVI.Droid
             }
         }
 
-        public List<byte[]> GetImages()
+        public List<string> GetImages()
         {
-            if (Directory.Exists(Environment.DirectoryPictures + "/personalMobility"))
+            if (Directory.Exists(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/personalMobility"))
             {
-                List<byte[]> list = new List<byte[]>();
-                string[] filePaths = Directory.GetFiles(Environment.DirectoryPictures + "/personalMobility");
+                List<string> list = new List<string>();
+                string[] filePaths = Directory.GetFiles(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "/personalMobility");
                 foreach (string filePath in filePaths)
                 {
 
-                    list.Add(File.ReadAllBytes(filePath));
+                    list.Add(filePath);
                 }
                 return list;
             }

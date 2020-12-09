@@ -1,8 +1,8 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Android.Widget;
 using Plugin.Media;
 using System;
 using System.Threading.Tasks;
@@ -15,8 +15,8 @@ namespace SAVI.Droid
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
-           // ToolbarResource = Resource.Layout.Toolbar;
-
+            // ToolbarResource = Resource.Layout.Toolbar;
+            Current = this;
             base.OnCreate(savedInstanceState);
 
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
@@ -43,6 +43,25 @@ namespace SAVI.Droid
 
           
         }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (requestCode == PickImageId)
+            {
+                if ((resultCode == Result.Ok) && (data != null))
+                {
+                    // Set the filename as the completion of the Task
+                    PickImageTaskCompletionSource.SetResult(data.DataString);
+                }
+                else
+                {
+                    PickImageTaskCompletionSource.SetResult(null);
+                }
+            }
+        }
+
         public override void OnBackPressed()
         {
             if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))

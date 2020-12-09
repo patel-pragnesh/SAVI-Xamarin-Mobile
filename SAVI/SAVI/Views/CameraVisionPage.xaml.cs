@@ -132,7 +132,7 @@ namespace SAVI
             InitializeComponent();
 
             textSteptwo.IsVisible = false;
-
+            btnClaim.IsVisible = false;
             buttonClaimAutoVerify.IsEnabled = false;
             buttonClaimAutoVerify.IsVisible = false;
             buttonClaimManual.IsEnabled = false;
@@ -141,6 +141,7 @@ namespace SAVI
             imageButton5.IsEnabled = false;
             imageButton5.IsVisible = false;
             img.IsVisible = false;
+            dataGrid.IsVisible = false;
             SAVIApplication.mProds = new List<ValidateBarcodeReply>();
             setheader();
           
@@ -225,8 +226,9 @@ namespace SAVI
         {
             if (btnClaim.Text != "Clear to restart")
             {
-                if (SAVIApplication.mProds.Count > 0) { 
-                editProductNumber.IsVisible = false;
+                if (SAVIApplication.mProds.Count > 0) {
+                    dataGrid.IsVisible = true;
+                    editProductNumber.IsVisible = false;
                 imageScan.IsVisible = true;
                 btnScanI.IsVisible = false;
                 editInvoice.IsVisible = true;
@@ -235,6 +237,7 @@ namespace SAVI
                 img.IsVisible = true;
                 btnClaim.Text = "Clear to restart";
                 textSteptwo.IsVisible = true;
+                   
                 // await Navigation.PopModalAsync();
                 CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
                 //await DisplayAlert("", "Barcodes added, please capture invoice number.", "OK");
@@ -250,6 +253,7 @@ namespace SAVI
                     for (int i = 0; i < dataGrid.Children.Count(); ++i)
                         dataGrid.Children.RemoveAt(i);
 
+                    dataGrid.IsVisible = false;
                     textSteptwo.IsVisible = false;
 
                     editProductNumber.IsVisible = true;
@@ -259,7 +263,9 @@ namespace SAVI
 
                     img.IsEnabled = false;
                     img.IsVisible = false;
-
+                    buttonClaimManual.IsVisible = false;
+                    buttonClaimAutoVerify.IsVisible = false;
+                    btnClaim.IsVisible = false;
                     btnClaim.Text = "Verify Barcodes";
                     // await Navigation.PopModalAsync();
                     CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
@@ -328,10 +334,7 @@ namespace SAVI
             double val = 0;
             for (int i = 0; i < SAVIApplication.mProds.Count; i++)
             {
-                if (Device.RuntimePlatform==Device.Android)
-                val += Convert.ToDouble(SAVIApplication.mProds[i].RetailValue);
-
-                if (Device.RuntimePlatform == Device.iOS)
+            
                     val += Double.Parse(SAVIApplication.mProds[i].RetailValue, CultureInfo.InvariantCulture);
 
                 Basket b = new Basket();
@@ -567,7 +570,8 @@ namespace SAVI
                 CrossToastPopUp.Current.ShowToastMessage("Please enter the invoice number");
                 return;
             }
-
+            var pageLoading = new LoadingPopupPage();
+            await PopupNavigation.Instance.PushAsync(pageLoading);
 
             fruit = new List<string>();
             fruit.Add(editInvoice.Text.Trim().ToUpper());
@@ -683,6 +687,7 @@ namespace SAVI
 
                 CrossToastPopUp.Current.ShowToastMessage("It could not find any text at image");
             }
+            pageLoading.CloseMe();
 
         }
         public async void LoadRecognizedTextItems(List<List<string>> items, string base64Image) //iOS
@@ -761,6 +766,7 @@ namespace SAVI
                         validateBarcodeReply.VoucherID = validVoucherAndPromotion2Reply.IdValue.ID1;
                         SAVIApplication.mProds.Add(validateBarcodeReply);
                     }
+                    if (SAVIApplication.mProds.Count() > 0) { dataGrid.IsVisible = true; btnClaim.IsVisible = true; }
                     for (int i = 0; i < dataGrid.Children.Count(); ++i)
                         dataGrid.Children.RemoveAt(i);
                     dataGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40, GridUnitType.Absolute) });

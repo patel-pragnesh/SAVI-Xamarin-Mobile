@@ -37,7 +37,7 @@
                                 android:Button.UseDefaultShadow="True"
                             
                             
-                            HeightRequest="40" BackgroundColor="Transparent"   Text="{x:Static fontawesome:FontAwesomeIcons.Camera}"
+                            HeightRequest="50" BackgroundColor="Transparent"   Text="{x:Static fontawesome:FontAwesomeIcons.Camera}"
                                      FontFamily="{StaticResource FontAwesomeSolid}"
                                  FontSize="50"  Grid.Row="1"   TextColor="#01aef0" HorizontalOptions="End" Padding="0" FlexLayout.AlignSelf="Center">
                             <Label.GestureRecognizers>
