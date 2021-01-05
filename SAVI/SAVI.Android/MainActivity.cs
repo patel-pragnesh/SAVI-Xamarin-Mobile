@@ -1,9 +1,11 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Gms.Common;
 using Android.OS;
 using Android.Runtime;
 using Plugin.Media;
+using SAVI.com.celcom.savi;
 using System;
 using System.Threading.Tasks;
 
@@ -19,6 +21,8 @@ namespace SAVI.Droid
             Current = this;
             base.OnCreate(savedInstanceState);
 
+            SAVIApplication.googleApiAvailable= isGmsAvailable(ApplicationContext);
+
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             await CrossMedia.Current.Initialize();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
@@ -31,6 +35,32 @@ namespace SAVI.Droid
 
             LoadApplication(new App());
         }
+
+
+        //public static bool isHmsAvailable(Context context)
+        //{
+        //    bool isAvailable = false;
+        //    if (null != context)
+        //    {
+        //        int result = HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(context);
+        //        isAvailable = (Com.Huawei.Hms.Api.ConnectionResult.SUCCESS == result);
+        //    }
+        //   // Log.i(TAG, "isHmsAvailable: " + isAvailable);
+        //    return isAvailable;
+        //}
+
+        public static bool isGmsAvailable(Context context)
+        {
+            bool isAvailable = false;
+            if (null != context)
+            {
+                int result = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(context);
+                isAvailable = (ConnectionResult.Success == result);
+            }
+            //Log.i(TAG, "isGmsAvailable: " + isAvailable);
+            return isAvailable;
+        }
+
         // Field, properties, and method for Video Picker
         public static MainActivity Current { private set; get; }
         public static readonly int PickImageId = 1000;

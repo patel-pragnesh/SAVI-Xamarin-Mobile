@@ -39,6 +39,7 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidSupportedAbis />
     <LangVersion>8.0</LangVersion>
+    <AndroidKeyStore>false</AndroidKeyStore>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,6 +51,11 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <LangVersion>8.0</LangVersion>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Users\bghaffari\Downloads\codefusion.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias>codefusion</AndroidSigningKeyAlias>
+    <AndroidSigningStorePass>codefusion</AndroidSigningStorePass>
+    <AndroidSigningKeyPass>codefusion</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

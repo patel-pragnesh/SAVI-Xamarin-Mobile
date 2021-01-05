@@ -7,6 +7,7 @@ namespace SAVI.com.celcom.savi
 {
     public class SAVIApplication
     {
+        public static bool googleApiAvailable = false;
         public static string CCMETER;
         public static string CCMETERPROD;
         public static string ns = "http://tempuri.org/";

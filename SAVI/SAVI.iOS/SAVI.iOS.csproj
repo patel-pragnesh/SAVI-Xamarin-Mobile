@@ -64,7 +64,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Distribution: VIRTUAL PAYMENT SOLUTIONS (PTY) LTD (Z82C96Y23X)</CodesignKey>
+    <CodesignKey>Apple Distribution: VIRTUAL PAYMENT SOLUTIONS (PTY) LTD (Z82C96Y23X)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchUseLlvm>false</MtouchUseLlvm>
     <OptimizePNGs>true</OptimizePNGs>
@@ -72,7 +72,7 @@
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <BuildIpa>true</BuildIpa>
     <IpaPackageDir>$(OutputPath)</IpaPackageDir>
-    <CodesignProvision>Mobility Distribution</CodesignProvision>
+    <CodesignProvision>MobilityDistribution</CodesignProvision>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>
@@ -102,19 +102,16 @@
     <BundleResource Include="Resources\FontAwesome5Solid.otf" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\102411.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1201.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\15211.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\15212.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\16711.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\16712.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\180.png">
@@ -156,16 +153,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\87.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-4021.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Logo_102423.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Logo_152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Logo_167.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ios_marketing1024x10243.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\close_circle_button.imageset\close_circle_button.png">
