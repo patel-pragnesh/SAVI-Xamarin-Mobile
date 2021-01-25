@@ -363,7 +363,7 @@ namespace SAVI
 
                 baskets.Add(b);
             }
-            SAVIApplication.mProds.Clear();
+           // SAVIApplication.mProds.Clear();
             UniqueBarcode.Clear();
 
             string result = App.SoapService.CaptureMobilityBasketCustomer(baskets, editInvoice.Text.Trim().ToUpper(), SAVIApplication.mRegistrationID.ToString(), name, surname, number, email, "--", "--", "--", "--", "--", "--");
@@ -377,37 +377,45 @@ namespace SAVI
                         {
                             CrossToastPopUp.Current.ShowToastMessage("Upload of invoice failed but the claim was successful. Please use the Upload Invoice option to upload the invoice.");
                         }
-                        else if (resultUpload=="success")
+                       
+                      /* else if (resultUpload == "Upload failed as the Store is the wrong store.")
                         {
                             CrossToastPopUp.Current.ShowToastMessage(resultUpload);
-
+                        }*/
+                        else if (resultUpload != "success")
+                        {
+                            CrossToastPopUp.Current.ShowToastMessage(resultUpload);
                         }
                         else
                         {
-                            if (mProm!=null)
+                            if (resultUpload == "success")
                             {
-                                double v =Convert.ToDouble(mProm.BelowThreshold);
-
-                                if (val >= Convert.ToDouble(mProm.Threshold))
+                                SAVIApplication.mProds.Clear();
+                                if (mProm != null)
                                 {
-                                    v = Convert.ToDouble(mProm.AboveThreshold);
-                                }
+                                    double v = Convert.ToDouble(mProm.BelowThreshold);
 
-                                if (AutoValidated)
-                                {
-                                    var pageMessage = new ShowMessagePopupPage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
-                                    PopupNavigation.Instance.PushAsync(pageMessage);
-                                //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
-                                }
-                                else
-                                {
-                                    var pageMessage = new ShowMessagePopupPage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
-                                    PopupNavigation.Instance.PushAsync(pageMessage);
+                                    if (val >= Convert.ToDouble(mProm.Threshold))
+                                    {
+                                        v = Convert.ToDouble(mProm.AboveThreshold);
+                                    }
 
-                                //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
+                                    if (AutoValidated)
+                                    {
+                                        var pageMessage = new ShowMessagePopupPage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
+                                        PopupNavigation.Instance.PushAsync(pageMessage);
+                                        //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
+                                    }
+                                    else
+                                    {
+                                        var pageMessage = new ShowMessagePopupPage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
+                                        PopupNavigation.Instance.PushAsync(pageMessage);
+
+                                        //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
+                                    }
+                                    //CancelDocumentViewController.Invoke();
+                                    this.Navigation.PopAsync();
                                 }
-                                //CancelDocumentViewController.Invoke();
-                                this.Navigation.PopAsync();
                             }
                         }
                     }
@@ -800,7 +808,7 @@ namespace SAVI
                     var pageMessage = new ShowMessagePopupPage(validVoucherAndPromotion2Reply.IdValue.Value);
                     PopupNavigation.Instance.PushAsync(pageMessage);
 
-                    CancelDocumentViewController.Invoke();
+                   // CancelDocumentViewController.Invoke();
   
                 }
             }
