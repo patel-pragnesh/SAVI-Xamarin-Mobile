@@ -1065,10 +1065,61 @@ namespace SAVI.Utils
         }
 
 
-        public string CaptureMobilityBasketCustomer(List<Basket> Baskets, string InvoiceNumber, string RegistrationID, string Name, string Surname, string Number, string Email, string Address1, string Address2, string Address3, string Address4, string Address5 , string PostCode)
+        public string CaptureMobilityBasketCustomer(List<Basket> Baskets, string InvoiceNumber, string RegistrationID, string Name, string Surname, string Number, string Email, string Address1, string Address2, string Address3, string Address4, string Address5, string PostCode)
         {
+            String BasketString = String.Empty;
+            foreach (var b in Baskets)
+            {
+                if (b.RedemptionID == null) b.RedemptionID = string.Empty;
+                if (b.PromotionProductID == null) b.PromotionProductID = string.Empty;
+                if (b.ImeiID == null) b.ImeiID = string.Empty;
+                if (b.VoucherID == null) b.VoucherID = string.Empty;
+                if (b.Imei == null) b.Imei = string.Empty;
+                if (b.Voucher == null) b.Voucher = string.Empty;
+                if (b.InvoiceID == null) b.InvoiceID = string.Empty;
+                if (b.RedemtionDate == null) b.RedemtionDate = string.Empty;
+                if (b.RedemtionDate != null)
+                {
+                    var _date = DateTime.Parse(b.RedemtionDate);
+                    b.RedemtionDate = string.Format("{0:yyyy-MM-ddThh:mm:ss}", _date);
+                }
+                if (b.StoreName == null) b.StoreName = string.Empty;
+                if (b.StoreRep == null) b.StoreRep = string.Empty;
+                if (b.StoreRepMSISDN == null) b.StoreRepMSISDN = string.Empty;
+                if (b.SubmittedDeviceLocationLatitude == null) b.SubmittedDeviceLocationLatitude = string.Empty;
+                if (b.SubmittedDeviceLocationLongitude == null) b.SubmittedDeviceLocationLongitude = string.Empty;
+
+                if (b.StoreID == null) b.StoreID = string.Empty;
+                if (b.CompanyID == null) b.CompanyID = string.Empty;
+                if (b.Company == null) b.Company = string.Empty;
+                if (b.NoStock == null) b.NoStock = string.Empty;
+                if (b.Pin == null) b.Pin = string.Empty;
+                BasketString = BasketString + "<Basket>" +
+          "<RedemptionID>" + b.RedemptionID + "</RedemptionID>" +
+          "<PromotionProductID>" + b.PromotionProductID + "</PromotionProductID>" +
+          "<ImeiID>" + b.ImeiID + "</ImeiID>" +
+          "<VoucherID>" + b.VoucherID + "</VoucherID>" +
+          "<Imei>" + b.Imei + "</Imei>" +
+          "<Voucher>" + b.Voucher + "</Voucher>" +
+          "<InvoiceID>" + b.InvoiceID + "</InvoiceID>" +
+          "<RedemtionDate>" + b.RedemtionDate + "</RedemtionDate>" +
+          "<StoreName>" + b.StoreName + "</StoreName>" +
+          "<StoreRep>" + b.StoreRep + "</StoreRep>" +
+          "<StoreRepMSISDN>" + b.StoreRepMSISDN + "</StoreRepMSISDN>" +
+          "<SubmittedDeviceLocationLatitude>" + b.SubmittedDeviceLocationLatitude + "</SubmittedDeviceLocationLatitude>" +
+          "<SubmittedDeviceLocationLongitude>" + b.SubmittedDeviceLocationLongitude + "</SubmittedDeviceLocationLongitude>" +
+          "<StoreID>" + b.StoreID + "</StoreID>" +
+          "<CompanyID>" + b.CompanyID + "</CompanyID>" +
+          "<Company>" + b.Company + "</Company>" +
+          "<NoStock>" + b.NoStock + "</NoStock>" +
+          "<Pin>" + b.Pin + "</Pin >" +
+        "</Basket>";
+
+            }
+
             //Calling CreateSOAPWebRequest method    
             HttpWebRequest request = CreateSOAPWebRequest();
+
 
             XmlDocument SOAPReqBody = new XmlDocument();
             //SOAP Body Request    
@@ -1076,7 +1127,7 @@ namespace SAVI.Utils
             <soap:Envelope xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-   instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">  
              <soap:Body>  
                 <CaptureMobilityBasketCustomer xmlns=""http://tempuri.org/"">  
-                  <BasketArray>" + Baskets + @"</BasketArray>  
+                  <BasketArray>" + BasketString + @"</BasketArray>  
                   <InvoiceNumber>" + InvoiceNumber + @"</InvoiceNumber>  
                   <RegistrationID>" + RegistrationID + @"</RegistrationID>  
                   <Name>" + Name + @"</Name>
@@ -1122,7 +1173,6 @@ namespace SAVI.Utils
                 }
             }
         }
-
 
 
         public string UpdateInvoiceNew(string base64Invoice, string InvoiceNumber, string StoreID, string extension, string AutoValidated)

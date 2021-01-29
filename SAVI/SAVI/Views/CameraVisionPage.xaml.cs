@@ -578,8 +578,8 @@ namespace SAVI
                 CrossToastPopUp.Current.ShowToastMessage("Please enter the invoice number");
                 return;
             }
-            var pageLoading = new LoadingPopupPage();
-            await PopupNavigation.Instance.PushAsync(pageLoading);
+           // var pageLoading = new LoadingPopupPage();
+         //   await PopupNavigation.Instance.PushAsync(pageLoading);
 
             fruit = new List<string>();
             fruit.Add(editInvoice.Text.Trim().ToUpper());
@@ -695,7 +695,7 @@ namespace SAVI
 
                 CrossToastPopUp.Current.ShowToastMessage("It could not find any text at image");
             }
-            pageLoading.CloseMe();
+          //  pageLoading.CloseMe();
 
         }
         public async void LoadRecognizedTextItems(List<List<string>> items, string base64Image) //iOS
@@ -808,8 +808,12 @@ namespace SAVI
                     var pageMessage = new ShowMessagePopupPage(validVoucherAndPromotion2Reply.IdValue.Value);
                     PopupNavigation.Instance.PushAsync(pageMessage);
 
-                   // CancelDocumentViewController.Invoke();
-  
+                    try
+                    {
+                        CancelDocumentViewController.Invoke();
+                    }
+                    catch { }
+
                 }
             }
         }
