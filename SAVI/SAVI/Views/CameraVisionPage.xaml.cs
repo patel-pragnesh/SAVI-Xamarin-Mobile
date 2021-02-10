@@ -9,7 +9,7 @@ using SAVI.com.celcom.savi;
 using SAVI.com.celcom.savi.common;
 using SAVI.CustomControl;
 using SAVI.Models;
-
+using SAVI.Views;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -237,10 +237,16 @@ namespace SAVI
                 img.IsVisible = true;
                 btnClaim.Text = "Clear to restart";
                 textSteptwo.IsVisible = true;
-                   
-                // await Navigation.PopModalAsync();
-                CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
-                //await DisplayAlert("", "Barcodes added, please capture invoice number.", "OK");
+
+                    // await Navigation.PopModalAsync();
+
+                     DisplayAlert("", "Barcodes added, please capture invoice number.", "OK");
+
+                 //   CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
+
+                  /// var pageMessage = new ShowMessagePopupPage("Barcodes added, please capture invoice number.");
+                    //PopupNavigation.Instance.PushAsync(pageMessage);
+                    return;
                 }
             }
             else
@@ -267,16 +273,21 @@ namespace SAVI
                     buttonClaimAutoVerify.IsVisible = false;
                     btnClaim.IsVisible = false;
                     btnClaim.Text = "Verify Barcodes";
-                    // await Navigation.PopModalAsync();
-                    CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
-                    // await DisplayAlert("", "Barcodes added, please capture invoice number.", "OK");
+                    //    Navigation.PopModalAsync();
+                    //CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
+                   //   DisplayAlert("", "Barcodes added, please capture invoice number.", "OK");
+
+                //    CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
+                  //  var pageMessage = new ShowMessagePopupPage("Barcodes added, please capture invoice number.");
+                    //PopupNavigation.Instance.PushAsync(pageMessage);
+                    return;
                 }
             }
         }
 
         
 
-        private  void buttonClaimManualClicked(object sender, EventArgs e)
+        private  async void buttonClaimManualClicked(object sender, EventArgs e)
         {
             if (editInvoice.Text == null)
             {
@@ -290,10 +301,17 @@ namespace SAVI
                 CrossToastPopUp.Current.ShowToastMessage("Please enter the invoice number");
                 return;
             }
-            continueclaim(false);
+
+            bool answer = await DisplayAlert("", "Do you want to proceed?", "OK", "Cancel");
+            if (answer)
+            {
+                continueclaim(false);
+
+            }
+            return;
 
         }
-        private  void buttonAutoVerifyClicked(object sender, EventArgs e)
+        private async  void buttonAutoVerifyClicked(object sender, EventArgs e)
         {
             if (editInvoice.Text == null)
             {
@@ -315,9 +333,18 @@ namespace SAVI
                 CrossToastPopUp.Current.ShowToastMessage("There is not any Product in the list!");
                 return;
             }
-            continueclaim(true);
+
+            bool answer = await DisplayAlert("", "Do you want to proceed?", "OK", "cancel");
+            if (answer)
+            {
+                continueclaim(true);
+
+            }
+            return;
+
+         
         }
-        private void continueclaim(bool autovalidation)
+        private async void continueclaim(bool autovalidation)
         {
              String name = "N/A";
              String surname = "N/A";
@@ -375,20 +402,28 @@ namespace SAVI
 
                         if (string.IsNullOrWhiteSpace(resultUpload))
                         {
-                            CrossToastPopUp.Current.ShowToastMessage("Upload of invoice failed but the claim was successful. Please use the Upload Invoice option to upload the invoice.");
+                         //   CrossToastPopUp.Current.ShowToastMessage("Upload of invoice failed but the claim was successful. Please use the Upload Invoice option to upload the invoice.");
+                            var pageMessage = new ShowMessagePopupPage("Upload of invoice failed but the claim was successful. Please use the Upload Invoice option to upload the invoice.");
+                          await  PopupNavigation.Instance.PushAsync(pageMessage);
+
+                            return;
                         }
-                       
-                      /* else if (resultUpload == "Upload failed as the Store is the wrong store.")
+
+                        /* else if (resultUpload == "Upload failed as the Store is the wrong store.")
+                          {
+                              CrossToastPopUp.Current.ShowToastMessage(resultUpload);
+                          }*/
+                        else if (resultUpload.ToUpper() != "SUCCESS")
                         {
-                            CrossToastPopUp.Current.ShowToastMessage(resultUpload);
-                        }*/
-                        else if (resultUpload != "success")
-                        {
-                            CrossToastPopUp.Current.ShowToastMessage(resultUpload);
+                           // CrossToastPopUp.Current.ShowToastMessage(resultUpload);
+                            var pageMessage = new ShowMessagePopupPage(resultUpload);
+                          await  PopupNavigation.Instance.PushAsync(pageMessage);
+
+                            return;
                         }
                         else
                         {
-                            if (resultUpload == "success")
+                            if (resultUpload.ToUpper() == "SUCCESS")
                             {
                                 SAVIApplication.mProds.Clear();
                                 if (mProm != null)
@@ -403,18 +438,20 @@ namespace SAVI
                                     if (AutoValidated)
                                     {
                                         var pageMessage = new ShowMessagePopupPage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
-                                        PopupNavigation.Instance.PushAsync(pageMessage);
+                                       await PopupNavigation.Instance.PushAsync(pageMessage);
                                         //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you have receive R" + v + " Commission, Please remember to upsell to get greater commissions");
                                     }
                                     else
                                     {
                                         var pageMessage = new ShowMessagePopupPage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
-                                        PopupNavigation.Instance.PushAsync(pageMessage);
+                                       await PopupNavigation.Instance.PushAsync(pageMessage);
 
                                         //    CrossToastPopUp.Current.ShowToastMessage("Congratulations you will receive R" + v + " Commission once verified all is correct by our team, Please remember to upsell to get greater commissions");
                                     }
                                     //CancelDocumentViewController.Invoke();
-                                    this.Navigation.PopAsync();
+                                   await this.Navigation.PopAsync();
+                                    await Navigation.PushAsync(new Main());
+                                    return;
                                 }
                             }
                         }
@@ -528,11 +565,16 @@ namespace SAVI
                             byte[] resizedImage = DependencyService.Get<IImageService>().ResizeTheImage(bytes, 1024, 768);
 
                             Imagebase64 = System.Convert.ToBase64String(resizedImage);
+                           
+                         
+
 
                             var pageLoading = new LoadingPopupPage();
                             await PopupNavigation.Instance.PushAsync(pageLoading);
                             logExtrasForTesting(listString);
                             pageLoading.CloseMe();
+                            imageScan.Source = ImageSource.FromStream(() => new MemoryStream(bytes));
+                            return;
                         }
 
                        
@@ -550,6 +592,7 @@ namespace SAVI
                     else if (status != PermissionStatus.Unknown)
                     {
                         await DisplayAlert("Camera Denied", "Can not continue, try again.", "OK");
+                        return;
                     }
                 }
                 catch (Exception ex)
@@ -652,6 +695,9 @@ namespace SAVI
                     btnScanI.IsVisible = false;
 
                     await DisplayAlert("", "Claim successfully validated, please submit your claim.", "OK");
+
+                  
+                    return;
                 }
                 else
                 {
@@ -669,13 +715,41 @@ namespace SAVI
                     if (!barCodeExistance && InvExistance) messageDiolgue = "Invoice number is found and One/more Barcode(s) is/are not found. Your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.";
                     if (barCodeExistance && InvExistance) messageDiolgue = "Invoice number and barcode(s) are found but your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.";
                     if (!barCodeExistance && !InvExistance) messageDiolgue = "Invoice number and barcode(s) are not found and  your claim was not successfully validated, please submit for manual verification or take a photo of your invoice again.";
-                    bool answer = await DisplayAlert("", messageDiolgue, "OK", "Manual Submit");
-                    if (!answer)
+                    bool answer = await DisplayAlert("", messageDiolgue, "Manual Submit", "Cancel");
+                    if (answer)
                     {
                         continueclaim(AutoValidated);
                         
                     }
-                    
+                    else
+                    {
+                      
+                      
+
+
+
+                        SAVIApplication.mProds.Clear();
+                        UniqueBarcode.Clear();
+                        for (int i = 0; i < dataGrid.Children.Count(); ++i)
+                            dataGrid.Children.RemoveAt(i);
+
+                        dataGrid.IsVisible = false;
+                        textSteptwo.IsVisible = false;
+
+                        editProductNumber.IsVisible = true;
+                        imageScan.IsVisible = false;
+                        btnScanI.IsVisible = true;
+                        editInvoice.IsVisible = false;
+
+                        img.IsEnabled = false;
+                        img.IsVisible = false;
+                        buttonClaimManual.IsVisible = false;
+                        buttonClaimAutoVerify.IsVisible = false;
+                        btnClaim.IsVisible = false;
+                        btnClaim.Text = "Verify Barcodes";
+
+                    }
+                    return;
                         
                 }
             }
@@ -693,7 +767,9 @@ namespace SAVI
                 img.IsVisible = true;
 
 
-                CrossToastPopUp.Current.ShowToastMessage("It could not find any text at image");
+              //  CrossToastPopUp.Current.ShowToastMessage("It could not find any text at image");
+                await DisplayAlert("", "It could not find any text at image", "OK");
+                return;
             }
           //  pageLoading.CloseMe();
 
@@ -742,6 +818,81 @@ namespace SAVI
 
         }
 
+
+
+        void addproducts()
+        {
+         //   dataGrid.IsVisible = false;
+            //for (int i = 0; i < dataGrid.Children.Count(); ++i)
+                //dataGrid.Children.RemoveAt(i);
+            dataGrid.Children.Clear();
+
+          //  dataGrid.IsVisible = true;
+
+            if (SAVIApplication.mProds.Count() > 0) { dataGrid.IsVisible = true; btnClaim.IsVisible = true; }
+          
+            dataGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40, GridUnitType.Absolute) });
+
+            for (int i = 0; i < SAVIApplication.mProds.Count; i++)
+            {
+
+
+
+                var imageButton = new ImageButton
+                {
+                    Source = "x50.png",
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Start,
+                    CommandParameter = i.ToString()
+
+                };
+                imageButton.Clicked += OnImageButtonClicked;
+                dataGrid.Children.Add(imageButton, 0, i);
+
+            }
+
+            dataGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1000, GridUnitType.Absolute) });
+            for (int i = 0; i < SAVIApplication.mProds.Count; i++)
+            {
+
+
+
+                var label1 = new Label
+                {
+                    TextColor = Color.Black,
+                    Text = "  ",
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Start
+                };
+                dataGrid.Children.Add(label1, 0, i);
+                label1 = new Label
+                {
+                    TextColor = Color.Black,
+                    Text = SAVIApplication.mProds[i].Barcode + "\r\n" + SAVIApplication.mProds[i].Description,
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Start
+                };
+                dataGrid.Children.Add(label1, 1, i);
+            }
+
+        }
+        void OnImageButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var imageButton = sender as ImageButton;
+                string theValue = imageButton.CommandParameter.ToString();
+                //CrossToastPopUp.Current.ShowToastError(theValue, Plugin.Toast.Abstractions.ToastLength.Long);
+                int thevalueInt = Convert.ToInt32(theValue);
+                SAVIApplication.mProds.RemoveAt(thevalueInt);
+                addproducts();
+                //header
+            }
+            catch
+            {
+
+            }
+        }
         public void addmProd()
         {
             if (!string.IsNullOrWhiteSpace(editProductNumber.Text))
@@ -773,32 +924,12 @@ namespace SAVI
                         validateBarcodeReply.PromotionID = validVoucherAndPromotion2Reply.IdValue.PromotionID;
                         validateBarcodeReply.VoucherID = validVoucherAndPromotion2Reply.IdValue.ID1;
                         SAVIApplication.mProds.Add(validateBarcodeReply);
+                        addproducts();
                     }
-                    if (SAVIApplication.mProds.Count() > 0) { dataGrid.IsVisible = true; btnClaim.IsVisible = true; }
-                    for (int i = 0; i < dataGrid.Children.Count(); ++i)
-                        dataGrid.Children.RemoveAt(i);
-                    dataGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40, GridUnitType.Absolute) });
-                    dataGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1000, GridUnitType.Absolute) });
-                    for (int i = 0; i < SAVIApplication.mProds.Count; i++)
-                    {
-                       
-                        var label1 = new Label
-                        {
-                            TextColor=Color.Black,
-                            Text = "  ",
-                            VerticalOptions = LayoutOptions.Center,
-                            HorizontalOptions = LayoutOptions.Start
-                        };
-                        dataGrid.Children.Add(label1, 0, i);
-                        label1 = new Label
-                        {
-                            TextColor = Color.Black,
-                            Text = SAVIApplication.mProds[i].Barcode + "\r\n" + SAVIApplication.mProds[i].Description,
-                            VerticalOptions = LayoutOptions.Center,
-                            HorizontalOptions = LayoutOptions.Start
-                        };
-                        dataGrid.Children.Add(label1, 1, i);
-                    }
+                  
+
+
+
                 }
                 else
                 {

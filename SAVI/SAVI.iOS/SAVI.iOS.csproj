@@ -269,6 +269,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\ivoice_active.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\x50.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarSAVIiOSHideInfoBar="True" />

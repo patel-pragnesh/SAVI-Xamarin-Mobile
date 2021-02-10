@@ -10268,6 +10268,9 @@ namespace SAVI.Droid
 			// aapt resource value: 0x7F0700B3
 			public const int welcome_celcom = 2131165363;
 			
+			// aapt resource value: 0x7F0700B4
+			public const int x50 = 2131165364;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
