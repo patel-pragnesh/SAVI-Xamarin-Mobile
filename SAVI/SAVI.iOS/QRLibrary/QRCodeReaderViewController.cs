@@ -14,7 +14,7 @@ namespace SAVI.iOS
 		private QRCodeReaderCallback callback;
 		private static QRCodeReaderViewController intance;
 
-        
+        [Obsolete]
         public static QRCodeReaderViewController Intance()
 		{
 			if (null == intance)
@@ -22,7 +22,7 @@ namespace SAVI.iOS
 			return intance;
 		}
 
-       
+        [Obsolete]
         private QRCodeReaderViewController ()
 		{
 			QRCodeGlobalObject.TheQRCodeReaderViewController = this;
@@ -31,9 +31,11 @@ namespace SAVI.iOS
 			this.View = readerView;
 		}
 
-      
+        [Obsolete]
+#pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
         public override void ViewDidAppear(bool animated)
-		{
+#pragma warning restore CS0809 // Obsolete member overrides non-obsolete member
+        {
 			readerView.StartScan ();
 		}
 

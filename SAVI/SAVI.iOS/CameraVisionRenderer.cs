@@ -25,8 +25,10 @@ namespace SAVI.iOS.Renderers
     {
         CameraVisionPage _page;
 
-     
+        [Obsolete]
+#pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
+#pragma warning restore CS0809 // Obsolete member overrides non-obsolete member
         {
             base.OnElementChanged(e);
 
@@ -39,7 +41,7 @@ namespace SAVI.iOS.Renderers
             _page.ShowBarcodeDocumentViewController += ShowBarcodeDocumentViewController;
         }
 
-      
+        [Obsolete]
         public void ShowBarcodeDocumentViewController()
         {
             if (NativeView != null)

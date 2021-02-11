@@ -595,7 +595,7 @@ namespace SAVI
                         return;
                     }
                 }
-                catch (Exception ex)
+                catch /*(Exception ex)*/
                 {
 
                     // await DisplayAlert("Error", "Camera Not Available", "OK");

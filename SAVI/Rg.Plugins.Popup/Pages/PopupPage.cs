@@ -131,7 +131,9 @@ namespace Rg.Plugins.Popup.Pages
         }
 
     [Obsolete]
-    protected override void OnPropertyChanged(string propertyName = null)
+#pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
+        protected override void OnPropertyChanged(string propertyName = null)
+#pragma warning restore CS0809 // Obsolete member overrides non-obsolete member
         {
             base.OnPropertyChanged(propertyName);
 

@@ -82,7 +82,7 @@ namespace SAVI.Views
 
 
                 }
-                catch (Exception ex)
+                catch 
                 {
                     Preferences.Set(Globals.version, "");
                 }

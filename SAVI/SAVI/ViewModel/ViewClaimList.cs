@@ -94,7 +94,7 @@ namespace SAVI.ViewModel
                 stClass.checkstatus = true;
               //  pageLoading.CloseMe();
             }
-            catch (Exception ex)
+            catch /*(Exception ex)*/
             {
                 stClass.checkstatus = false;
                 stClass.isBusy = true;

@@ -14,7 +14,7 @@
     <AssemblyName>SAVI.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <ProvisioningType>manual</ProvisioningType>
+    <ProvisioningType>automatic</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,7 +64,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Distribution: VIRTUAL PAYMENT SOLUTIONS (PTY) LTD (Z82C96Y23X)</CodesignKey>
+    <CodesignKey>Apple Development: Babak Ghaffari (RQDX9W6D4C)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchUseLlvm>false</MtouchUseLlvm>
     <OptimizePNGs>true</OptimizePNGs>
@@ -72,7 +72,7 @@
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <BuildIpa>true</BuildIpa>
     <IpaPackageDir>$(OutputPath)</IpaPackageDir>
-    <CodesignProvision>MobilityDistribution</CodesignProvision>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>

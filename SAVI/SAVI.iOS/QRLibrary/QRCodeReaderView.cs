@@ -22,7 +22,7 @@ namespace SAVI.iOS
 		AVCaptureMetadataOutput metadataOutput;
 		AVCaptureVideoPreviewLayer previewLayer;
 
-       
+        [Obsolete]
         public void StartScan()
 		{
 			if (session != null) {
@@ -44,7 +44,7 @@ namespace SAVI.iOS
 				session.StopRunning ();
 		}
 
-       
+        [Obsolete]
         public QRCodeReaderView (QRCodeReaderViewController _thisController)
 		{
 			this.thisController = _thisController;
@@ -145,7 +145,7 @@ namespace SAVI.iOS
 			}
 		}
 
-      
+        [Obsolete]
         private void Setup()
 		{
 			AVAuthorizationStatus authorizationStatus = AVCaptureDevice.GetAuthorizationStatus(AVMediaType.Video);
@@ -176,7 +176,7 @@ namespace SAVI.iOS
 			}
 		}
 
-      
+        [Obsolete]
         public void SetupCapture()
 		{
 			this.session = new AVCaptureSession();

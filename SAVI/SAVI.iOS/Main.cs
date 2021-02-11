@@ -19,7 +19,7 @@ namespace SAVI.iOS
             {
                 UIApplication.Main(args, null, "AppDelegate");
             }
-            catch (Exception e)
+            catch
             {
                 ;
                 //throw;

@@ -11,7 +11,8 @@ namespace SAVI.iOS
 
         #region ExtendMethod
 
-       
+
+        [Obsolete]
         public static void ShowQRCodeReaderViewController(this UIViewController controller,QRCodeReaderCallback callback)
 		{
 			QRCodeReaderViewController.Intance().Show(controller,(result)=>{

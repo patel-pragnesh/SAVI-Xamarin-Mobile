@@ -13,9 +13,9 @@ namespace SAVI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Register : ContentPage
     {
-
+/*
         private string Brand = "Unassigned";
-        private string BrandID = "1";
+        private string BrandID = "1";*/
 
 
         public Register()

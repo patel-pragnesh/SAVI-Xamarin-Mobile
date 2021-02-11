@@ -40,6 +40,11 @@
     <AndroidSupportedAbis />
     <LangVersion>8.0</LangVersion>
     <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Users\user\Downloads\codefusion.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>celcom</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>celcom</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>celcom</AndroidSigningKeyPass>
+    <AndroidApkSignerAdditionalArguments>celcom</AndroidApkSignerAdditionalArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>

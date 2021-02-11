@@ -113,7 +113,7 @@ namespace SAVI.Views
                     await DisplayAlert("Camera Denied", "Can not continue, try again.", "OK");
                 }
             }
-            catch (Exception ex)
+            catch 
             {
 
                // await DisplayAlert("Error", "Camera Not Available", "OK");
