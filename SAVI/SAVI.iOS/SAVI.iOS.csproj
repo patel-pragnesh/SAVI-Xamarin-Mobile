@@ -14,7 +14,7 @@
     <AssemblyName>SAVI.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,7 +64,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Babak Ghaffari (RQDX9W6D4C)</CodesignKey>
+    <CodesignKey>Apple Distribution: VIRTUAL PAYMENT SOLUTIONS (PTY) LTD (Z82C96Y23X)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchUseLlvm>false</MtouchUseLlvm>
     <OptimizePNGs>true</OptimizePNGs>
@@ -72,7 +72,7 @@
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <BuildIpa>true</BuildIpa>
     <IpaPackageDir>$(OutputPath)</IpaPackageDir>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>MobilityDistribution</CodesignProvision>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>
@@ -106,12 +106,6 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1201.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\15212.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\16712.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\180.png">
@@ -153,7 +147,13 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\87.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ios_marketing1024x10243.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ios_marketing1024x102441.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ipad1522.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ipad1671.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\close_circle_button.imageset\close_circle_button.png">
@@ -274,7 +274,7 @@
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarSAVIiOSHideInfoBar="True" />
+      <UserProperties TriggeredFromHotReload="False" XamarinHotReloadWrongLinkerErrorInfoBarSAVIiOSHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

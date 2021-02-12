@@ -37,6 +37,7 @@ namespace SAVI
         public string filePath { get; set; }
         public MediaFile ImageFile { get; set; }
         public Action ShowDocumentViewController;
+        public Action UpdateImageScanController;
         public Action CancelDocumentViewController;
         public Action ShowBarcodeDocumentViewController;
         public TextRecognitionLevelEnum TextRecognitionLevel;
@@ -74,7 +75,7 @@ namespace SAVI
         bool atleastonehitimgbutton = false;
         GetPromotionByIDReply mProm;
 
-
+       
         private string _recognizedCode;
 
         public string RecognizedCode
@@ -91,27 +92,34 @@ namespace SAVI
             }
         }
 
-        //protected override  void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    //if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-        //    //{
-        //    //    await DisplayAlert("WARNING!", "Error message!", "OK");
-        //    //    await Navigation.PopModalAsync();
-        //    //}
-        //    //else
-        //    //{
 
-        //    //    //...
 
-        //    //}
+        public void updateImageScan(byte[] bytes)
+        {
+            imageScan.Source = ImageSource.FromStream(() => new MemoryStream(bytes));
+        }
 
-        //    //editProductNumber CrossToastPopUp.Current.ShowToastMessage(Globals.barcodeResult);
+            //protected override  void OnAppearing()
+            //{
+            //    base.OnAppearing();
+            //    //if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            //    //{
+            //    //    await DisplayAlert("WARNING!", "Error message!", "OK");
+            //    //    await Navigation.PopModalAsync();
+            //    //}
+            //    //else
+            //    //{
 
-        //    editProductNumber.Text = Globals.barcodeResult;
-        //    Globals.barcodeResult = string.Empty;
-        //}
-        public CameraVisionPage()
+            //    //    //...
+
+            //    //}
+
+            //    //editProductNumber CrossToastPopUp.Current.ShowToastMessage(Globals.barcodeResult);
+
+            //    editProductNumber.Text = Globals.barcodeResult;
+            //    Globals.barcodeResult = string.Empty;
+            //}
+            public CameraVisionPage()
         {
             this.BindingContext = this;
              counter1 = 0;
@@ -559,12 +567,12 @@ namespace SAVI
                             listString =  DependencyService.Get<Iocr>().ShowAndroid(ImageFile.GetStream());
                       
                             var stream = file.GetStream();
-                            var bytes = new byte[stream.Length];
+                            byte[] bytes = new byte[stream.Length];
                             await stream.ReadAsync(bytes, 0, (int)stream.Length);
 
                             byte[] resizedImage = DependencyService.Get<IImageService>().ResizeTheImage(bytes, 1024, 768);
 
-                            Imagebase64 = System.Convert.ToBase64String(resizedImage);
+                          if (bytes!=null)  Imagebase64 = System.Convert.ToBase64String(resizedImage);
                            
                          
 

@@ -17,6 +17,7 @@ using AVFoundation;
 using SAVI.com.celcom.savi.common;
 using Demo.Pages;
 using Rg.Plugins.Popup.Services;
+using System.IO;
 
 [assembly: ExportRenderer(typeof(CameraVisionPage), typeof(CameraVisionRenderer))]
 namespace SAVI.iOS.Renderers
@@ -24,6 +25,7 @@ namespace SAVI.iOS.Renderers
     public class CameraVisionRenderer : PageRenderer, IVNDocumentCameraViewControllerDelegate
     {
         CameraVisionPage _page;
+        byte[] resizedImage;
 
         [Obsolete]
 #pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
@@ -39,9 +41,19 @@ namespace SAVI.iOS.Renderers
             _page.CancelDocumentViewController += CancelDocumentViewController;
 
             _page.ShowBarcodeDocumentViewController += ShowBarcodeDocumentViewController;
+
+            _page.UpdateImageScanController += UpdateImageScanController;
         }
 
+
         [Obsolete]
+        public void UpdateImageScanController()
+        {
+
+            _page.updateImageScan(resizedImage);
+        }
+
+            [Obsolete]
         public void ShowBarcodeDocumentViewController()
         {
             if (NativeView != null)
@@ -87,6 +99,7 @@ namespace SAVI.iOS.Renderers
         }
 
         [Export("documentCameraViewController:didFinishWithScan:")]
+        [Obsolete]
         public async void DidFinish(VNDocumentCameraViewController controller, VNDocumentCameraScan scan)
         {
            
@@ -112,8 +125,10 @@ namespace SAVI.iOS.Renderers
                         {
                             Byte[] myByteArray = new Byte[imageData.Length];
                             System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, myByteArray, 0, Convert.ToInt32(imageData.Length));
-                            byte[] resizedImage = DependencyService.Get<IImageService>().ResizeTheImage(myByteArray, 1024, 768);
+                            resizedImage = DependencyService.Get<IImageService>().ResizeTheImage(myByteArray, 1024, 768);
                             _base64String = Convert.ToBase64String(resizedImage);
+
+                            if (resizedImage != null) UpdateImageScanController();
                         }
 
                         var imageRequestHandler = new VNImageRequestHandler(image.CGImage, options: new NSDictionary());
