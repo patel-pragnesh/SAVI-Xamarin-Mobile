@@ -2333,7 +2333,7 @@ namespace SAVI.Utils
             catch { return false; }
         }
 
-        public int RegisterV2( string CompanyTradingName, string Name, string Surname, string IdType, string IdNumber, string ContactNumber, string ContactEmail, string StoreID, string Username, string Password, string Title, string Middlename)
+        public int RegisterV2( string CompanyTradingName, string Name, string Surname, string companyID, string ContactNumber, string ContactEmail, string StoreID, string Username, string Password, string Title, string Middlename)
         {
             try
             {
@@ -2342,25 +2342,27 @@ namespace SAVI.Utils
 
                 XmlDocument SOAPReqBody = new XmlDocument();
                 //SOAP Body Request    
+
+    
                 SOAPReqBody.LoadXml(@"<?xml version=""1.0"" encoding=""utf-8""?>  
             <soap:Envelope xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-   instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">  
-             <soap:Body>  
+             <soap:Body>   
                 <RegisterV2 xmlns=""http://tempuri.org/"">  
-                  <CompanyTradingName>" + CompanyTradingName + @"</CompanyTradingName>  
+                  <CompanyTradingName>" + CompanyTradingName + @"</CompanyTradingName>
                   <Name>" + Name + @"</Name>  
                   <Surname>" + Surname + @"</Surname>  
-                  <IdType>" + IdType + @"</IdType>  
-                  <IdNumber>" + IdNumber + @"</IdNumber>  
                   <ContactNumber>" + ContactNumber + @"</ContactNumber>  
                   <ContactEmail>" + ContactEmail + @"</ContactEmail>
                   <StoreID>" + StoreID + @"</StoreID>
+                  <CompanyID>" + companyID + @"</CompanyID>  
                   <Username>" + Username + @"</Username>
                   <Password>" + Password + @"</Password>
                   <Title>" + Title + @"</Title>
-                  <Middlename>" + Middlename + @"</Middlename>
+                  <MiddleName>" + Middlename + @"</MiddleName>
                 </RegisterV2>  
               </soap:Body>  
             </soap:Envelope>");
+
 
                 using (Stream stream = request.GetRequestStream())
                 {

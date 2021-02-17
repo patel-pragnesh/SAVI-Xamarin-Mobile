@@ -33,7 +33,7 @@
 
 
                         <Label Text="Celcom Account Number:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
-                        <Entry x:Name="editTextCelcomAccountNumber" Placeholder="Username" FlexLayout.AlignSelf="Stretch" ReturnType="Next"  BackgroundColor="#f2f2f2" TextColor="Black"/>
+                        <Entry x:Name="editTextCelcomAccountNumber" Placeholder="Account" FlexLayout.AlignSelf="Stretch" ReturnType="Next"  BackgroundColor="#f2f2f2" TextColor="Black"/>
 
                         <Label Text="Trading Name:" HorizontalOptions="CenterAndExpand" FlexLayout.AlignSelf="Start" TextColor="Black" Margin="0,30,0,0"/>
                         <Entry x:Name="editTextTradingName" Placeholder="Trading Name:" FlexLayout.AlignSelf="Stretch" ReturnType="Next" BackgroundColor="#f2f2f2" TextColor="Black"/>

@@ -139,6 +139,7 @@ namespace SAVI.Views
                         await PopupNavigation.Instance.PushAsync(pageMessage);
 
                         await Navigation.PopAsync();
+                        return;
 
                     }
                     else
@@ -150,8 +151,8 @@ namespace SAVI.Views
 
                         App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Pay2Bank", "PaymentId = " + SAVIApplication.PaymentTypeID + "Amount = " + editAmount.Text.Trim() + "cellnumber = " + cellnumber + " Somthing wrong for paying!");
 
-                   
 
+                        return;
 
 
                         //var currentPage = Navigation.NavigationStack[Navigation.NavigationStack.IndexOf(this)];
@@ -168,7 +169,7 @@ namespace SAVI.Views
                 var pageMessage = new ShowMessagePopupPage("Somthing Wrong! Please try again.");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Pay2Bank", DateTime.Now.ToString() + "|" + ex.Message);
-               
+                return;
             }
             
         }

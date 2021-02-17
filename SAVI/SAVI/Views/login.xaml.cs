@@ -176,6 +176,7 @@ namespace SAVI.Views
                         pageLoading.CloseMe();
                          pageMessage = new ShowMessagePopupPage("Unable to login with the details you have provided. Please register if you haven't. Please try again.");
                         await PopupNavigation.Instance.PushAsync(pageMessage);
+                        return;
 
                     }
                     }
@@ -184,6 +185,7 @@ namespace SAVI.Views
                         pageLoading.CloseMe();
                         pageMessage = new ShowMessagePopupPage(ex.Message);
                         await PopupNavigation.Instance.PushAsync(pageMessage);
+                    return;
                     }
                 
 
@@ -216,7 +218,7 @@ namespace SAVI.Views
                 await PopupNavigation.Instance.PushAsync(pageMessage);
              
             }
-            finally { pageLoading.CloseMe(); }
+            finally { pageLoading.CloseMe();  }
 
 
 

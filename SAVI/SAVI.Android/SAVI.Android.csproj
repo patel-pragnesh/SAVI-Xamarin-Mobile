@@ -44,7 +44,11 @@
     <AndroidSigningStorePass>celcom</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>celcom</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>celcom</AndroidSigningKeyPass>
-    <AndroidApkSignerAdditionalArguments>celcom</AndroidApkSignerAdditionalArguments>
+    <AndroidApkSignerAdditionalArguments>
+    </AndroidApkSignerAdditionalArguments>
+    <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
+    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+    <AndroidDexTool>d8</AndroidDexTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>

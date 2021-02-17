@@ -55,7 +55,7 @@ namespace SAVI.com.celcom.savi.common
         public static int imageHeight = 489;
 
         public  static string URL = "https://vpstss05.vpsvirtual.com";
-        //public  static String URL = "https:/";
+       // public  static String URL = "https:/";
 
 
         /**************************************************************************************************/
@@ -75,13 +75,13 @@ namespace SAVI.com.celcom.savi.common
 
         /**************************************************************************************************/
         //  RELEASE - SAVI
-          //public  static String URL_WS_S = "/savi.celcom.co.za/WebService/SARPWs.asmx";
-          //public  static String VERSION_URL_S = "/savi/version.json";
+        //  public  static String URL_WS_S = "/savi.celcom.co.za/WebService/SARPWs.asmx";
+        //  public  static String VERSION_URL_S = "/savi/version.json";
 
         /**************************************************************************************************/
         //  RELEASE - Mobility
-         //public  static String URL_WS_M = "/mobility.celcom.co.za/WebService/saRPWs.asmx";
-         //public  static String VERSION_URL_M = "/celcommobility/version.json";
+       //  public  static String URL_WS_M = "/mobility.celcom.co.za/WebService/saRPWs.asmx";
+        // public  static String VERSION_URL_M = "/celcommobility/version.json";
 
 
         /**************************************************************************************************/
