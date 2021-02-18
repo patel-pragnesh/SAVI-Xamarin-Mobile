@@ -25,13 +25,13 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.celcom.savi</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.16</string>
+	<string>1.0.17</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>SAVI</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.16</string>
+	<string>1.0.17</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Your app accesses the user&apos;s photo library</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
@@ -52,5 +52,11 @@
 	<string>The app needs to have location once in use Usage</string>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is required to streamline the reward claim verification</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Your location is required to streamline the reward claim verification</string>
+	<key>CustomProperty</key>
+	<string>Your location is required to streamline the reward claim verification</string>
 </dict>
 </plist>
