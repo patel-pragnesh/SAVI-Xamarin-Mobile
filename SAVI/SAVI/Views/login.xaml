@@ -73,7 +73,7 @@
                             </Grid.ColumnDefinitions>
                             <CheckBox x:Name="checkRemember" Grid.Column="0" VerticalOptions="Center" CheckedChanged="checkRemember_CheckedChanged"/>
                             <Label Text="Remember Me" Grid.Column="1" HorizontalOptions="Start"  TextColor="Black" VerticalOptions="Center" FontSize="Micro"/>
-                            <Button Text="Forget Password" Grid.Column="2" BackgroundColor="Transparent"  TextColor="#01aef0" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150"/>
+                            <Button Text="Forget Password" Clicked="ForgetPasswordButton_Clicked" Grid.Column="2" BackgroundColor="Transparent"  TextColor="#01aef0" HorizontalOptions="End" Padding="0" HeightRequest="40" WidthRequest="150"/>
                         </Grid>
                         <Button x:Name="bteditTextUser"
                                 ios:VisualElement.IsShadowEnabled="true"

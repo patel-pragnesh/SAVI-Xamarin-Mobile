@@ -33,6 +33,65 @@ namespace SAVI.Utils
         }
 
 
+        public bool forgetpassword(string Username, string Company)
+        {
+            try
+            {
+                //Calling CreateSOAPWebRequest method    
+                HttpWebRequest request = CreateSOAPWebRequest();
+
+                XmlDocument SOAPReqBody = new XmlDocument();
+                //SOAP Body Request    
+                SOAPReqBody.LoadXml(@"<?xml version=""1.0"" encoding=""utf-8""?>  
+            <soap:Envelope xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-   instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">  
+             <soap:Body>  
+                <ForgotPassword  xmlns=""http://tempuri.org/"">  
+                  <Username>" + Username + @"</Username>  
+                  <Company>" + Company + @"</Company>  
+                </ForgotPassword >  
+              </soap:Body>  
+            </soap:Envelope>");
+
+                using (Stream stream = request.GetRequestStream())
+                {
+                    SOAPReqBody.Save(stream);
+                }
+                //Geting response from request    
+                using (WebResponse Serviceres = request.GetResponse())
+                {
+                    using (StreamReader rd = new StreamReader(Serviceres.GetResponseStream()))
+                    {
+                        //reading stream    
+                        var ServiceResult = rd.ReadToEnd();
+                        var soap = XDocument.Parse(ServiceResult);
+
+
+                        IEnumerable<XElement> resultes = soap.Descendants(ns + "ForgotPasswordResponse");
+
+                      /*  ForgetPasswordReply ForgetPasswordResult = new ForgetPasswordReply();
+
+                        foreach (XElement result in resultes)
+                        {
+                            ForgetPasswordResult.ForgotPasswordResult = (string)result.Element(ns + "ForgotPasswordResult");
+
+                        }*/
+                        bool ForgetResult = false;
+
+                        foreach (XElement result in resultes)
+                        {
+                            ForgetResult = (bool)result.Element(ns + "ForgotPasswordResult");
+
+                        }
+
+                        return ForgetResult;
+                    }
+                }
+            }
+            catch { return false; }
+        }
+
+
+
         public LoginReply login(string Username, string Password)
         {
             try

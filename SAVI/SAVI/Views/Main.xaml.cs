@@ -95,6 +95,19 @@ namespace SAVI.Views
                 TheCarousel.ItemsSource = listImage;
             }
 
+            if (listImage.Count<=0)
+            {
+                listImage.Add("mobilityspivs.jpg");
+                listImage.Add("mobilityspivs2.jpg");
+                listImage.Add("mobilityspivs3.jpg");
+                listImage.Add("mobilityspivs4.jpg");
+                listImage.Add("mobilityspivs5.jpg");
+                listImage.Add("mobilityspivs6.jpg");
+                listImage.Add("mobilityspivs7.jpg");
+                listImage.Add("mobilityspivs8.jpg");
+                TheCarousel.ItemsSource = listImage;
+            }
+
 
             if (listImage.Count > 0)
             {

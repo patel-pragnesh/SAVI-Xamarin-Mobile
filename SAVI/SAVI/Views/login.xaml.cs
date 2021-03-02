@@ -65,6 +65,12 @@ namespace SAVI.Views
             }
         }
 
+        private async void ForgetPasswordButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ForgetPassword());
+
+        }
+
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
             
@@ -183,7 +189,7 @@ namespace SAVI.Views
                     catch (Exception ex)
                     {
                         pageLoading.CloseMe();
-                        pageMessage = new ShowMessagePopupPage(ex.Message);
+                        pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                         await PopupNavigation.Instance.PushAsync(pageMessage);
                     return;
                     }
@@ -193,28 +199,28 @@ namespace SAVI.Views
             catch (FaultException ex)
             {
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
-                pageMessage = new ShowMessagePopupPage("Error: "+ex.Message);
+                pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
              
             }
             catch (CommunicationException ex)
             {
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
-                pageMessage = new ShowMessagePopupPage("Error: " + ex.Message);
+                pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
             
             }
             catch (TimeoutException ex)
             {
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
-                pageMessage = new ShowMessagePopupPage("Error: " + ex.Message);
+                pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
               
             }
             catch (Exception ex)
             {
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
-                pageMessage = new ShowMessagePopupPage("Error: " + ex.Message);
+                pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
              
             }
