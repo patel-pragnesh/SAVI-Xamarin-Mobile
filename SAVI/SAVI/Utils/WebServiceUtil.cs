@@ -2556,7 +2556,7 @@ namespace SAVI.Utils
                             mobileBanner.ID = (string)result.Element(ns + "ID");
                             mobileBanner.Image = (string)result.Element(ns + "Image");
                             mobileBanner.Order = (string)result.Element(ns + "Order");
-
+                            mobileBanner.URL = (string)result.Element(ns + "URL");
                             mobileBanners.Add(mobileBanner);
 
                         }

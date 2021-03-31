@@ -13,7 +13,7 @@ namespace SAVI.com.celcom.savi.common
         public static string barcodeResult = string.Empty;
 
         public static string[] ClientName = new string[50];
-
+        public static string[] BannerURLList = new string[500];
 
         public  static int SOCK_TIMEOUT = 90000;
 
@@ -80,14 +80,14 @@ namespace SAVI.com.celcom.savi.common
 
         /**************************************************************************************************/
         //  RELEASE - Mobility
-         //public  static String URL_WS_M = "/mobility.celcom.co.za/WebService/saRPWs.asmx";
-         //public  static String VERSION_URL_M = "/celcommobility/version.json";
+         public  static String URL_WS_M = "/mobility.celcom.co.za/WebService/saRPWs.asmx";
+         public  static String VERSION_URL_M = "/celcommobility/version.json";
 
 
         /**************************************************************************************************/
         //  RELEASE Beta- Mobility
-        public  static String URL_WS_M = "/mobility.celcom.co.za/WebSvc/saRPWs.asmx";
-        public  static String VERSION_URL_M = "/celcommobility/version.json";
+        //public  static String URL_WS_M = "/mobility.celcom.co.za/WebSvc/saRPWs.asmx";
+       //public  static String VERSION_URL_M = "/celcommobility/version.json";
 
 
     }

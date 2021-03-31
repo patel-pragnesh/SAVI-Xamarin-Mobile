@@ -14,7 +14,10 @@ namespace SAVI.Models
         [System.Xml.Serialization.XmlElement("Order")]
         public string Order { get; set; }
 
-     
+        [System.Xml.Serialization.XmlElement("URL")]
+        public string URL { get; set; }
+
+
 
 
     }
