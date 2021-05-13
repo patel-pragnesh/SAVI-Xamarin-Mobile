@@ -8,12 +8,16 @@
              >
     <ContentPage.Content>
         <StackLayout>
-            <Label 
-                x:Name="textViewAddress"
-                Text="Provider:"
-                 />
-
-            <CheckBox x:Name="checkBox" />
+            
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="checkBox" Grid.Column="0" Color="Green"/>
+                <Label   x:Name="textViewAddress" TextColor="Black"  Grid.Column="1"/>
+            </Grid>
+           
 
             <Button x:Name="buttonFinish"     ios:VisualElement.IsShadowEnabled="true" FontSize="Medium"  BorderWidth="1"  BackgroundColor="#01aef0" CornerRadius="10" HeightRequest="40" WidthRequest="60"
                                 ios:VisualElement.ShadowColor="Gray"

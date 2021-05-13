@@ -238,8 +238,10 @@ namespace SAVI
                     dataGrid.IsVisible = true;
                     editProductNumber.IsVisible = false;
                 imageScan.IsVisible = true;
+                   
                 btnScanI.IsVisible = false;
-                editInvoice.IsVisible = true;
+                    btnScanI.IsEnabled = false;
+                    editInvoice.IsVisible = true;
                 editInvoice.Focus();
                 img.IsEnabled = true;
                 img.IsVisible = true;
@@ -250,10 +252,11 @@ namespace SAVI
 
                      DisplayAlert("", "Barcodes added, please capture invoice number.", "OK");
 
-                 //   CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
+                    //   CrossToastPopUp.Current.ShowToastMessage("Barcodes added, please capture invoice number.");
 
-                  /// var pageMessage = new ShowMessagePopupPage("Barcodes added, please capture invoice number.");
+                    /// var pageMessage = new ShowMessagePopupPage("Barcodes added, please capture invoice number.");
                     //PopupNavigation.Instance.PushAsync(pageMessage);
+                    editInvoice.Focus();
                     return;
                 }
             }
@@ -272,6 +275,7 @@ namespace SAVI
 
                     editProductNumber.IsVisible = true;
                     imageScan.IsVisible = false;
+                    btnScanI.IsEnabled = true;
                     btnScanI.IsVisible = true;
                     editInvoice.IsVisible = false;
 
@@ -547,6 +551,8 @@ namespace SAVI
                         var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                         {
                             PhotoSize = PhotoSize.MaxWidthHeight,
+                            RotateImage = false,
+                            AllowCropping = true,
                             Directory = "Sample",
                             Name = "test.jpg",
                             SaveToAlbum = true,
@@ -745,6 +751,7 @@ namespace SAVI
                         textSteptwo.IsVisible = false;
 
                         editProductNumber.IsVisible = true;
+                        btnScanI.IsEnabled = true;
                         imageScan.IsVisible = false;
                         btnScanI.IsVisible = true;
                         editInvoice.IsVisible = false;
@@ -839,23 +846,35 @@ namespace SAVI
 
             if (SAVIApplication.mProds.Count() > 0) { dataGrid.IsVisible = true; btnClaim.IsVisible = true; }
           
-            dataGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40, GridUnitType.Absolute) });
+            dataGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(80, GridUnitType.Absolute) });
 
             for (int i = 0; i < SAVIApplication.mProds.Count; i++)
             {
 
 
+                var removebutton = new Button
+                {
+                   
+                    Text = "Remove",
+                    BackgroundColor = Color.White,
+                    TextColor = Color.Red,
+                    FontSize=10,
 
-                var imageButton = new ImageButton
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.StartAndExpand,
+                    CommandParameter = i.ToString()
+                };
+               /* var removebutton = new ImageButton
                 {
                     Source = "x50.png",
+
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Start,
                     CommandParameter = i.ToString()
 
-                };
-                imageButton.Clicked += OnImageButtonClicked;
-                dataGrid.Children.Add(imageButton, 0, i);
+                };*/
+                removebutton.Clicked += OnRemoveButtonClicked;
+                dataGrid.Children.Add(removebutton, 0, i);
 
             }
 
@@ -884,12 +903,12 @@ namespace SAVI
             }
 
         }
-        void OnImageButtonClicked(object sender, EventArgs e)
+        void OnRemoveButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                var imageButton = sender as ImageButton;
-                string theValue = imageButton.CommandParameter.ToString();
+                var Button = sender as Button;
+                string theValue = Button.CommandParameter.ToString();
                 //CrossToastPopUp.Current.ShowToastError(theValue, Plugin.Toast.Abstractions.ToastLength.Long);
                 int thevalueInt = Convert.ToInt32(theValue);
                 SAVIApplication.mProds.RemoveAt(thevalueInt);
@@ -964,13 +983,15 @@ namespace SAVI
 
 
             dataGridHeader.RowDefinitions.Add(new RowDefinition { Height = new GridLength(60, GridUnitType.Absolute) });
-            dataGridHeader.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40, GridUnitType.Absolute) });
+            dataGridHeader.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Absolute) });
             dataGridHeader.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1000, GridUnitType.Absolute) });
             var label = new Label
             {
-                Text = "  ",
+              
+               
+                Text = "        ",
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Start
             };
             dataGridHeader.Children.Add(label, 0, 0);
             label = new Label

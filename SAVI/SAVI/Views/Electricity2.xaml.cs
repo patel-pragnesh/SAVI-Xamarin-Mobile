@@ -22,7 +22,9 @@ namespace SAVI.Views
             _transactionRef = transactionRef;
             _Meter = Meter;
             _Amount = Amount;
+           
             InitializeComponent();
+            textViewAddress.Text = "Is the address correct?\n\n"+_Address;
         }
 
         private async void buttonFinish_Clicked(object sender, EventArgs e)

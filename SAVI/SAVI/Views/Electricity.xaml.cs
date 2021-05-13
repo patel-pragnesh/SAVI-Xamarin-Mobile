@@ -114,12 +114,14 @@ namespace SAVI.Views
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
                 CrossToastPopUp.Current.ShowToastMessage("Invalid session! Please login.");
-                App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Electricity", "Invalid session! Please login.");
+               // App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Electricity", "Invalid session! Please login.");
+                App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Electricity", ex.Message);
+
             }
-           
+
         }
     }
 }

@@ -28,21 +28,21 @@
                             IndicatorView="indicatorview">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <AbsoluteLayout>
+                        <!--<AbsoluteLayout>
                             <StackLayout 
                                                 AbsoluteLayout.LayoutBounds=
                                                 "0.5,0.3,AutoSize,AutoSize"
                                                 AbsoluteLayout.LayoutFlags=
                                                 "PositionProportional"
-                                                HorizontalOptions="Center">
-                                <Image Source="{Binding .}" HorizontalOptions="Center" VerticalOptions="Center">
+                                                HorizontalOptions="CenterAndExpand">-->
+                                <Image Source="{Binding .}"  Aspect="AspectFill">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer
                                           Tapped="TapGestureRecognizer_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
-                            </StackLayout>
-                        </AbsoluteLayout>
+                            <!--</StackLayout>
+                        </AbsoluteLayout>-->
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
@@ -124,7 +124,7 @@
                                 ios:VisualElement.ShadowOpacity="0.7"
                                 ios:VisualElement.ShadowRadius="10"
                                 android:VisualElement.Elevation="10"
-                                android:Button.UseDefaultShadow="True" Clicked="btClaimCommision_Clicked" Text="Claim Commision"  BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" FlexLayout.AlignSelf="Stretch" BorderColor="#555" BorderWidth="1">
+                                android:Button.UseDefaultShadow="True" Clicked="btClaimCommision_Clicked" Text="Claim Commission"  BackgroundColor="#01aef0" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" FlexLayout.AlignSelf="Stretch" BorderColor="#555" BorderWidth="1">
                             <ios:VisualElement.ShadowOffset>
                                 <Size>
                                     <x:Arguments>

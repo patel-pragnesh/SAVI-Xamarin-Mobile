@@ -4,6 +4,7 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
              x:Class="Demo.Pages.ShowMessagePopupPage"
+                     CloseWhenBackgroundIsClicked ="False"
                  >
 
         <pages:PopupPage.Animation>
@@ -25,14 +26,18 @@
         Margin="5"
         HorizontalOptions="Center"
         BackgroundColor="White">
-                    <StackLayout
-            IsClippedToBounds="True"
-            Padding="10, 5"
-            Spacing="3">
-
-                    <Label x:Name="MessageLabel"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large" TextColor="Black"/>
-
+                <StackLayout Padding="5"  
+                     BackgroundColor="White"  
+                     HorizontalOptions="Center"  
+                     VerticalOptions="Center">
+                    <Label  x:Name="MessageLabel" 
+                            FontSize="Large" TextColor="Black"
+                VerticalOptions="CenterAndExpand"   
+                HorizontalOptions="CenterAndExpand" />
+                    <Button Clicked="OnCloseButtonTapped"  
+                    Text="OK"/>
                 </StackLayout>
+              
                 </Frame>
                 <ContentView
           AbsoluteLayout.LayoutFlags="PositionProportional"

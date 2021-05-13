@@ -11,10 +11,14 @@ namespace Demo.Pages
     public ShowMessagePopupPage(string message)
     {
       InitializeComponent();
+            CloseWhenBackgroundIsClicked = false;
             MessageLabel.Text = message;
     }
-
-    protected override void OnAppearingAnimationBegin()
+        protected override bool OnBackButtonPressed()
+        {
+            return true; // Disable back button
+        }
+        protected override void OnAppearingAnimationBegin()
     {
       base.OnAppearingAnimationBegin();
       //FrameContainer.HeightRequest = -1;

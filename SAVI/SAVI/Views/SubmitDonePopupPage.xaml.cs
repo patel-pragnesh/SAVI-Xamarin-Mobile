@@ -13,10 +13,13 @@ namespace Demo.Pages
     public SubmitDonePopupPage()
     {
       InitializeComponent();
-
-    }
-
-    protected override void OnAppearingAnimationBegin()
+            CloseWhenBackgroundIsClicked = false;
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true; // Disable back button
+        }
+        protected override void OnAppearingAnimationBegin()
     {
       base.OnAppearingAnimationBegin();
       //FrameContainer.HeightRequest = -1;

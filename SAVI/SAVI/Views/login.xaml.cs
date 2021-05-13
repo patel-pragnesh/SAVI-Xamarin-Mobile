@@ -172,32 +172,42 @@ namespace SAVI.Views
                                 checkRemember.IsChecked = false;
                             }
                         }
-                            //Application.Current.MainPage = new Main();
-                      //  Application.Current.MainPage = new NavigationPage(new Main());
+                        //Application.Current.MainPage = new Main();
+                        //  Application.Current.MainPage = new NavigationPage(new Main());
+                        pageLoading.CloseMe();
                         await Navigation.PushAsync(new Main());
 
                     }
                     else
                     {
                         pageLoading.CloseMe();
-                         pageMessage = new ShowMessagePopupPage("Unable to login with the details you have provided. Please register if you haven't. Please try again.");
-                        await PopupNavigation.Instance.PushAsync(pageMessage);
-                        return;
+                        App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + " Username: "+ editTextUser.Text+"-Password: "+editTextPassword.Text);
+                      //  await DisplayAlert("", "Unable to login with the details you have provided. Please register if you haven't. Please try again.", "OK");
+
+                        
+
+                          pageMessage = new ShowMessagePopupPage("The Username or Password provided is incorrect, please try again.");
+
+                          await PopupNavigation.Instance.PushAsync(pageMessage);
+                        // return;
 
                     }
                     }
                     catch (Exception ex)
                     {
-                        pageLoading.CloseMe();
-                        pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
+                    pageLoading.CloseMe();
+                    App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
+
+                    pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                         await PopupNavigation.Instance.PushAsync(pageMessage);
-                    return;
+                   // return;
                     }
                 
 
             }
             catch (FaultException ex)
             {
+                pageLoading.CloseMe();
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
                 pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
@@ -205,6 +215,7 @@ namespace SAVI.Views
             }
             catch (CommunicationException ex)
             {
+                pageLoading.CloseMe();
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
                 pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
@@ -212,6 +223,7 @@ namespace SAVI.Views
             }
             catch (TimeoutException ex)
             {
+                pageLoading.CloseMe();
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
                 pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
@@ -219,13 +231,13 @@ namespace SAVI.Views
             }
             catch (Exception ex)
             {
+                pageLoading.CloseMe();
                 App.SoapService.WriteError(SAVIApplication.mRegistrationID.ToString(), "Login", DateTime.Now.ToString() + "|" + ex.Message);
                 pageMessage = new ShowMessagePopupPage("Error at processing! Please try again!");
                 await PopupNavigation.Instance.PushAsync(pageMessage);
              
             }
-            finally { pageLoading.CloseMe();  }
-
+            
 
 
         }
